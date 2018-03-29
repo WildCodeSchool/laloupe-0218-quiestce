@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
-import { Observable } from "rxjs/Observable";
-import { AngularFireAuth } from "angularfire2/auth";
+import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { EventEmitter } from "events";
-import { Router } from "@angular/router";
+import { EventEmitter } from 'events';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +12,7 @@ import { Router } from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
   user: Observable<firebase.User>;
-  authenticated: boolean = false;
+  authenticated = false;
 
   constructor(public af: AngularFireAuth, private router: Router) {
     this.af.authState.subscribe(
@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit {
       }).catch((error) => {
         this.authenticated = false;
         console.log('Error signing in: ', error);
-      })
+      });
   }
 
   logout() {
@@ -50,6 +50,6 @@ export class NavbarComponent implements OnInit {
       }).catch((error) => {
         this.authenticated = true;
         console.log('Error signing out: ', error);
-      })
+      });
   }
 }

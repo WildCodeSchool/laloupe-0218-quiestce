@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 
@@ -21,6 +21,7 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { routes } from './app.routes';
 
+
 import * as $ from 'jquery';
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import * as $ from 'jquery';
     NavbarComponent,
     HomeComponent,
     RulesComponent,
-    LoginComponent
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import * as $ from 'jquery';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    routes
+    routes,
+    NgbModule.forRoot()
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
