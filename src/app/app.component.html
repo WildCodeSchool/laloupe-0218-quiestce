@@ -18,10 +18,10 @@
             <a class="nav-link" routerLink="rules">Rules</a>
           </li>
           <li class="nav-item active col-4">
-            <div id="gSignInWrapper" (click)="auth.googleLogin()">
-              <div id="customBtn" class="customGPlusSignIn">
+            <div (click)="auth.googleLogin()">
+              <div class="customGPlusSignIn Custombtn">
                 <span class="icon"></span>
-                <span class="buttonText">Sign up</span>
+                <span class="Buttontext">Sign up</span>
               </div>
             </div>
           </li>
@@ -50,9 +50,9 @@
             </li>
             <li class="nav-item active col-3">
               <div (click)="auth.signOut()">
-                <div id="customBtn">
+                <div class="Custombtn">
                   <span class="icon"></span>
-                  <span class="buttonText">Sign out</span>
+                  <span class="Buttontext">Sign out</span>
                 </div>
               </div>
             </li>
