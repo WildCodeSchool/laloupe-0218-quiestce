@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDTLh_riqe9LKu0dzfEsVi6_YCCbc-tIgU",
-    authDomain: "laloupe-0218-quiestce.firebaseapp.com",
-    databaseURL: "https://laloupe-0218-quiestce.firebaseio.com",
-    projectId: "laloupe-0218-quiestce",
-    storageBucket: "",
-    messagingSenderId: "697009125532"
+    apiKey: 'AIzaSyDTLh_riqe9LKu0dzfEsVi6_YCCbc-tIgU',
+    authDomain: 'laloupe-0218-quiestce.firebaseapp.com',
+    databaseURL: 'https://laloupe-0218-quiestce.firebaseio.com',
+    projectId: 'laloupe-0218-quiestce',
+    storageBucket: '',
+    messagingSenderId: '697009125532'
   }
 };
