@@ -4,6 +4,7 @@
     "attr-name-style": false,
     "indent-width": false,
     "attr-req-value": false,
-    "id-class-style": false
+    "id-class-style": false,
+    "line-end-style": false
     // TODO: export htmllint's default cfg
 }
