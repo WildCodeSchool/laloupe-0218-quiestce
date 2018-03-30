@@ -1,0 +1,24 @@
+<div *ngIf="auth.user | async; then authenticated else guest">
+  <!-- Guest / user log -->
+</div>
+
+
+<!-- user NOT log -->
+<ng-template #guest>
+  <h3>Hey, GUEST</h3>
+  <p>Login to get started...</p>
+
+
+</ng-template>
+
+
+<!-- user log  -->
+<ng-template #authenticated>
+  <div *ngIf="auth.user | async as user">
+
+    <h3>Hey, {{ user.displayName }}</h3>
+    <img [src]="user.photoURL">
+  </div>
+
+
+</ng-template>

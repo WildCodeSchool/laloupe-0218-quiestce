@@ -1,0 +1,29 @@
+<html>
+
+<body>
+
+  <div class="login_design">
+    <div *ngIf="afAuth.authState | async as user; else showLogin">
+      <h1>Hello {{ user.displayName }}!</h1>
+      <div id="SignOut" (click)="logout()">
+        <div class="customGPlusSignIn customBtn">
+          <span class="icon"></span>
+          <span class="buttonText">Logout</span>
+        </div>
+      </div>
+    </div>
+    <ng-template #showLogin>
+      <div id="gSignInWrapper" (click)="login()">
+        <span class="label">Sign in with:</span>
+        <div class="customGPlusSignIn customBtn">
+          <span class="icon"></span>
+          <span class="buttonText">Google</span>
+        </div>
+      </div>
+
+    </ng-template>
+  </div>
+
+</body>
+
+</html>

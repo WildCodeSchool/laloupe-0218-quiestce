@@ -3,6 +3,8 @@
     "plugins": [],
     "attr-name-style": false,
     "indent-width": false,
-    "id-class-style": "dash"
+    "attr-req-value": false,
+    "id-class-style": false,
+    "line-end-style": false
     // TODO: export htmllint's default cfg
 }
