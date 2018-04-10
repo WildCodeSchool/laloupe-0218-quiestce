@@ -43,9 +43,9 @@ import { GameComponent } from './game/game.component';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     routes,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
   ],
   providers: [AuthService, AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

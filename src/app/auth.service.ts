@@ -9,80 +9,78 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
 interface User {
-    uid: string;
-    email: string;
-    photoURL?: string;
-    displayName?: string;
-    favoriteColor?: string;
+  uid: string;
+  email: string;
+  photoURL?: string;
+  displayName?: string;
+  favoriteColor?: string;
 }
 
 
 @Injectable()
 export class AuthService {
 
-    user: Observable<User>;
-    authId: string;
-    auth;
-    name: string;
-    constructor(private afAuth: AngularFireAuth,
-        private afs: AngularFirestore,
-        private router: Router) {
-
+  user: Observable<User>;
+  authId: string;
+  auth;
+  name: string;
+  constructor(private afAuth: AngularFireAuth,
+              private afs: AngularFirestore, private router: Router) {
         //// Get auth data, then get firestore user document || null
-        this.user = this.afAuth.authState
-            .switchMap(user => {
-                if (user) {
-                    return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-                } else {
-                    return Observable.of(null);
-                }
+    this.user = this.afAuth.authState
+            .switchMap((user) => {
+              if (user) {
+                return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+              }
+              return Observable.of(null);
+
             });
-        this.afAuth.authState.subscribe((user) => {
-            if (user) {
-                this.authId = user.uid;
-                this.name = user.displayName;
-            } else {
-                this.authId = null;
-                this.name = null;
-            }
-        });
-    }
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.authId = user.uid;
+        this.name = user.displayName;
+      } else {
+        this.authId = null;
+        this.name = null;
+      }
+    });
+  }
 
 
 
-    googleLogin() {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        return this.oAuthLogin(provider);
-    }
+  googleLogin() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    return this.oAuthLogin(provider);
+  }
 
-    private oAuthLogin(provider) {
-        return this.afAuth.auth.signInWithPopup(provider)
+  private oAuthLogin(provider) {
+    return this.afAuth.auth.signInWithPopup(provider)
             .then((credential) => {
-                this.updateUserData(credential.user);
+              this.updateUserData(credential.user);
             });
-    }
+  }
 
 
-    private updateUserData(user) {
+  private updateUserData(user) {
         // Sets user data to firestore on login
 
-        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
-        const data: User = {
-            uid: user.uid,
-            email: user.email,
-            displayName: user.displayName,
-            photoURL: user.photoURL
-        };
+    const data: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+    };
 
-        return userRef.set(data, { merge: true });
+    return userRef.set(data, { merge: true });
 
-    }
+  }
 
 
-    signOut() {
-        this.afAuth.auth.signOut().then(() => {
-            this.router.navigate(['/']);
-        });
-    }
+  signOut() {
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['/']);
+    });
+  }
 }

@@ -16,7 +16,8 @@ import { AuthService } from './../auth.service';
 })
 export class MatchmakingComponent implements OnInit {
 
-  constructor(private authService: AuthService, private db: AngularFirestore, private router: Router) { }
+  constructor(private authService: AuthService, private db: AngularFirestore, 
+              private router: Router) { }
 
   ngOnInit() {
     this.getRooms();
