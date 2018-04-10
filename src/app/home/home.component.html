@@ -10,6 +10,29 @@
       <div class="col-8 offset-4">
         <h3>Hey, GUEST</h3>
         <p>Login to get started...</p>
+        <ngb-carousel interval="50000">
+          <ng-template ngbSlide>
+            <img src="https://picsum.photos/900/500?image=687" alt="Random first slide">
+            <div class="carousel-caption">
+              <h3>first theme</h3>
+              <p>univers LOTR</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <img src="https://picsum.photos/900/500?image=52" alt="Random second slide">
+            <div class="carousel-caption">
+              <h3>second theme</h3>
+              <p>univers blabla</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <img src="https://picsum.photos/900/500?image=52" alt="Random third slide">
+            <div class="carousel-caption">
+              <h3>Third theme</h3>
+              <p>blablabla</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>
       </div>
     </div>
   </div>
@@ -22,8 +45,8 @@
     <div class="row">
       <div class="col-8 offset-2">
         <div *ngIf="auth.user | async as user">
-          <h3>Hello, {{ user.displayName }} wanna play a awesome game?</h3>
-          <ngb-carousel>
+          <h3>Hello, {{ user.displayName }} wanna play an awesome game?</h3>
+          <ngb-carousel interval="50000">
             <ng-template ngbSlide>
               <img src="https://picsum.photos/900/500?image=687" alt="Random first slide">
               <div class="carousel-caption">

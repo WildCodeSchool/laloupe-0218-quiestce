@@ -6,6 +6,8 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Player } from './../models/player';
 import { Room } from './../models/room';
 import 'rxjs/add/operator/take';
+import { LoginComponent } from '../login/login.component';
+import { AuthService } from './../auth.service';
 
 @Component({
   selector: 'app-matchmaking',
@@ -13,27 +15,19 @@ import 'rxjs/add/operator/take';
   styleUrls: ['./matchmaking.component.scss'],
 })
 export class MatchmakingComponent implements OnInit {
-  items: Observable<any[]>;
-  constructor(
-    public afAuth: AngularFireAuth,
-    private router: Router,
-    private db: AngularFirestore) { this.items = db.collection('items').valueChanges(); }
+
+  constructor(private authService: AuthService, private db: AngularFirestore, private router: Router) { }
 
   ngOnInit() {
-    this.afAuth.authState.subscribe((authState) => {
-      if (authState == null) {
-        this.router.navigate(['/']);
-      }
-      this.getRooms();
-    });
+    this.getRooms();
   }
 
   getRooms() {
-    const roomCollection = this.db.collection<Room>('rooms');
+    const roomsCollection = this.db.collection<Room>('rooms');
 
-    const snapshot = roomCollection.snapshotChanges().take(1).subscribe((snap) => {
+    const snapshot = roomsCollection.snapshotChanges().take(1).subscribe((snap) => {
       const player = new Player();
-      player.name = 'user' + Math.floor(Math.random() * 1000);
+      player.name = this.authService.name;
 
       for (const snapshotItem of snap) {
         const roomId = snapshotItem.payload.doc.id;
@@ -43,12 +37,12 @@ export class MatchmakingComponent implements OnInit {
           roomy.players.push(player);
           this.db.doc('rooms/' + roomId).update(JSON.parse(JSON.stringify(roomy)));
           this.router.navigate(['game', roomId, player.name]);
-          console.log('bob');
           return;
         }
       }
 
       const room = new Room();
+      room.turn = 1;
       room.players = [player];
       this.db.collection('rooms')
         .add(JSON.parse(JSON.stringify(room)))
