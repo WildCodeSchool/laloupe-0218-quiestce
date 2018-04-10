@@ -1,8 +1,42 @@
-<p>
-  game works!
-</p>
-<div class="row justify-content-center">
-  <div class="col-12 text-center">
-    <button type="button" class="btn buttonMenu" (click)="mainMenu()">menu</button>
-  </div>
+<div *ngIf="auth.user | async; then authenticated else guest">
+  <!-- template will replace this div -->
 </div>
+
+<!-- User NOT logged in -->
+<ng-template #guest>
+
+  <app-home></app-home>
+
+</ng-template>
+
+<!-- User logged in -->
+<ng-template #authenticated>
+  <div *ngIf="auth.user | async as user">
+
+
+  </div>
+
+  <div *ngIf="room && room.players.length > 1">
+    game ready
+
+    <div *ngIf="isMyTurn(); else elseBlock">
+      c'est mon tour
+      <button type="button" (click)="test()">test</button>
+    </div>
+    <ng-template #elseBlock>
+      c'est pas ton tour
+    </ng-template>
+
+
+  </div>
+
+  <p>GAME PAGE</p>
+  <p>
+    {{message}}
+  </p>
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <button type="button" class="btn buttonMenu" (click)="mainMenu()">menu</button>
+    </div>
+  </div>
+</ng-template>
