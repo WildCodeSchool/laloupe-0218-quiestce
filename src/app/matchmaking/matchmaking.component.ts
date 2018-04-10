@@ -42,8 +42,11 @@ export class MatchmakingComponent implements OnInit {
       }
 
       const room = new Room();
+      
       room.turn = 1;
       room.players = [player];
+      room.players[0].value = '';
+      room.answers = [];
       this.db.collection('rooms')
         .add(JSON.parse(JSON.stringify(room)))
         .then((doc) => {

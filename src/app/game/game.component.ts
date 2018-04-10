@@ -21,9 +21,9 @@ export class GameComponent implements OnInit {
   message = 'Attente d\'un joueur';
   roomId: string;
   username: string;
-  room: Room;
+  room: Room = new Room();
   myPlayerId: number;
-  imgbalise = '';
+  imgbalise: string = '';
   htmlStr: string = '';
   card:boolean = true;
   img: Observable<any[]>;
@@ -35,6 +35,7 @@ export class GameComponent implements OnInit {
 
   }
   ngOnInit() {
+    
     this.roomId = this.route.snapshot.paramMap.get('id');
     this.username = this.route.snapshot.paramMap.get('username');
     this.username = this.username.replace(/\s/g, '');
@@ -51,10 +52,8 @@ export class GameComponent implements OnInit {
   }
   test() {
     if (this.room.players[0].name === this.username) {
-      
       this.room.turn = 1;
     } else if (this.room.players[1].name === this.username) {
-    
       this.room.turn = 0;
     }
     this.db.doc('rooms/' + this.roomId).update(JSON.parse(JSON.stringify(this.room)));
@@ -87,5 +86,26 @@ export class GameComponent implements OnInit {
   updateRoom() {
     this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
   }
-  
+  // value = '';
+  onEnter(value: string) { 
+    console.log(this.room.players[0]);
+    const data = { question:value, answer:null, user:'' };
+    this.room.answers.push(data);
+    this.test();    
+  }
+  isMyTurnToAnswer() {
+    if (this.room.answers.length > 0 &&
+       this.room.answers[this.room.answers.length - 1].user !== this.username &&
+       this.room.answers[this.room.answers.length - 1].answer !== undefined) {
+      return true;
+    }return false;
+  }
+  sendAnswer(val) {
+    this.room.answers[this.room.answers.length - 1].answer = val;
+    this.room.answers[this.room.answers.length - 1].user = this.username;
+    this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
+  }
+  lastQuestion() {
+    return this.room.answers[this.room.answers.length - 1].question;    
+  }
 }
