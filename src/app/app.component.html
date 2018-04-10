@@ -19,7 +19,7 @@
           </li>
           <li class="nav-item active col-4">
             <div (click)="auth.googleLogin()">
-              <div class="Custom-Btn">
+              <div class="Custom-Btn customGPlusSignIn">
                 <span class="icon"></span>
                 <span class="Buttontext">Sign up</span>
               </div>
@@ -38,19 +38,21 @@
     <div class="container-fluid">
       <div class="row">
         <nav class="navbar navbar-expand">
-          <ul class="navbar-nav offset-4">
-            <li class="nav-item active col-3">
+          <ul class="navbar-nav col-12">
+            <li class="nav-item active col-3 offset-2">
               <a class="nav-link" routerLink="home">Home</a>
             </li>
-            <li class="nav-item active col-3">
+            <li class="nav-item col-3">
               <a class="nav-link" routerLink="rules">Rules</a>
             </li>
-            <li class="nav-item active col-4">
-              <span>{{ user.displayName }}</span>
+            <li class="nav-item col-5">
+              <span>
+                <img [src]="user.photoURL" width="40px" height="40px"> {{ user.displayName }}
+              </span>
             </li>
-            <li class="nav-item active col-3">
+            <li class="nav-item col-3">
               <div (click)="auth.signOut()">
-                <div class="Custom-Btn">
+                <div class="Custom-Btn customGPlusSignIn">
                   <span class="icon"></span>
                   <span class="Buttontext">Sign out</span>
                 </div>

@@ -23,6 +23,8 @@ import { routes } from './app.routes';
 
 
 import * as $ from 'jquery';
+import { MatchmakingComponent } from './matchmaking/matchmaking.component';
+import { GameComponent } from './game/game.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,8 @@ import * as $ from 'jquery';
     HomeComponent,
     RulesComponent,
     LoginComponent,
+    MatchmakingComponent,
+    GameComponent,
 
   ],
   imports: [

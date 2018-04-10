@@ -5,20 +5,55 @@
 
 <!-- user NOT log -->
 <ng-template #guest>
-  <h3>Hey, GUEST</h3>
-  <p>Login to get started...</p>
-
-
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-4">
+        <h3>Hey, GUEST</h3>
+        <p>Login to get started...</p>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 
 <!-- user log  -->
 <ng-template #authenticated>
-  <div *ngIf="auth.user | async as user">
-
-    <h3>Hey, {{ user.displayName }}</h3>
-    <img [src]="user.photoURL">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <div *ngIf="auth.user | async as user">
+          <h3>Hello, {{ user.displayName }} wanna play a awesome game?</h3>
+          <ngb-carousel>
+            <ng-template ngbSlide>
+              <img src="https://picsum.photos/900/500?image=687" alt="Random first slide">
+              <div class="carousel-caption">
+                <h3>first theme</h3>
+                <p>univers LOTR</p>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <img src="https://picsum.photos/900/500?image=52" alt="Random second slide">
+              <div class="carousel-caption">
+                <h3>second theme</h3>
+                <p>univers blabla</p>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <img src="https://picsum.photos/900/500?image=52" alt="Random third slide">
+              <div class="carousel-caption">
+                <h3>Third theme</h3>
+                <p>blablabla</p>
+              </div>
+            </ng-template>
+          </ngb-carousel>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+        <button type="button" class="btn" (click)="createGame()">Play</button>
+      </div>
+    </div>
   </div>
-
 
 </ng-template>
