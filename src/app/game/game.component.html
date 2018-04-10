@@ -18,19 +18,22 @@
 
   <div *ngIf="room && room.players.length > 1">
     game ready
-
+    <div *ngIf="card ; else nocard">
+        <img src="https://www.papiria.de/WebRoot/Store4/Shops/62463763/51C7/0E28/8CAA/D737/23CA/C0A8/28BB/FAE3/LB1340a_xs.jpg" alt="cards" (click)="randomCard()">
+    </div>
+    <ng-template #nocard>
+        <div [innerHTML]="htmlStr"></div>
+    </ng-template>
     <div *ngIf="isMyTurn(); else elseBlock">
-      c'est mon tour
+      my turn
       <button type="button" (click)="test()">test</button>
     </div>
     <ng-template #elseBlock>
-      c'est pas ton tour
+      not my turn
     </ng-template>
 
 
   </div>
-
-  <p>GAME PAGE</p>
   <p>
     {{message}}
   </p>

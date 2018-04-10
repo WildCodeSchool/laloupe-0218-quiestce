@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Player } from './../models/player';
 import { Room } from './../models/room';
+import { Img } from './../models/img';
 import * as firebase from 'firebase/app';
 import { MatchmakingComponent } from '../matchmaking/matchmaking.component';
 import { AuthService } from '../auth.service';
@@ -22,19 +23,21 @@ export class GameComponent implements OnInit {
   username: string;
   room: Room;
   myPlayerId: number;
-
-  choice: Observable<any[]>;
+  imgbalise = '';
+  htmlStr: string = '';
+  card:boolean = true;
+  img: Observable<any[]>;
   rooms: Observable<any[]>;
-  constructor(private route: ActivatedRoute, public auth: AuthService, 
-              private db: AngularFirestore, private router: Router) {
-    this.choice = db.collection('choice').valueChanges();
+  constructor(private route: ActivatedRoute, authService: AuthService, 
+              private db: AngularFirestore, private router: Router, public auth: AuthService) {
+    this.img = db.collection('img').valueChanges();
     this.rooms = db.collection('rooms').valueChanges();
 
   }
   ngOnInit() {
     this.roomId = this.route.snapshot.paramMap.get('id');
     this.username = this.route.snapshot.paramMap.get('username');
-
+    this.username = this.username.replace(/\s/g, '');
     this.db
       .doc<Room>('rooms/' + this.roomId)
       .valueChanges()
@@ -64,5 +67,25 @@ export class GameComponent implements OnInit {
   mainMenu() {
     this.router.navigate(['home']);
   }
-
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+  randomCard() {
+    let imgbalise;
+    this.db
+      .collection<Img>('img')
+      .valueChanges()
+      .take(1)
+      .subscribe((img) => {
+        imgbalise = img[this.getRandomInt(2)];
+        this.htmlStr = '<img src=' + imgbalise.urlImg +
+         ' alt = "imgToFind" ><h3>' + imgbalise.name + '</h3>';
+        this.card = false;
+        this.updateRoom();
+      });
+  }
+  updateRoom() {
+    this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
+  }
+  
 }

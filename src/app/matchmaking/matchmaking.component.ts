@@ -28,8 +28,7 @@ export class MatchmakingComponent implements OnInit {
 
     const snapshot = roomsCollection.snapshotChanges().take(1).subscribe((snap) => {
       const player = new Player();
-      player.name = this.authService.name;
-
+      player.name = this.authService.name.replace(/\s/g, '');
       for (const snapshotItem of snap) {
         const roomId = snapshotItem.payload.doc.id;
         const roomy = snapshotItem.payload.doc.data() as Room;
