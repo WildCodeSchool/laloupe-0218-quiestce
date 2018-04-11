@@ -28,24 +28,27 @@
       <button type="button" (click)="test()">test</button>
     </div>
     <ng-template #elseBlock>
-      not my turn
+        {{lastResponse()}}<br>
+      notmyturn
     </ng-template>
 
     <div *ngIf="isMyTurn() ;else question" >
-            test
+            myTurn
                  
             <div *ngIf="isMyTurnToAnswer(); else answer">
               {{lastQuestion()}}
+              <br>
                 <button (click)="sendAnswer(true)">Oui</button>
                 <button (click)="sendAnswer(false)">Non</button>
             </div>
             <ng-template #answer>
+              
                 <input #box (keyup.enter)="onEnter(box.value)"> 
             </ng-template>
     </div>>
     <ng-template #question>
         <p>{{value}}</p>
-        testnot
+        notMyTurn
       </ng-template>
   </div>
   <p>
