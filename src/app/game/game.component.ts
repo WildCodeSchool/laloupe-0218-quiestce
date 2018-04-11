@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -9,16 +9,17 @@ import { Img } from './../models/img';
 import * as firebase from 'firebase/app';
 import { MatchmakingComponent } from '../matchmaking/matchmaking.component';
 import { AuthService } from '../auth.service';
-
-
+import { NgbModal, NgbActiveModal, NgbModule, 
+  ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit {
-
+  closeResult: string;
   message = 'Attente d\'un joueur';
+  msg;
   roomId: string;
   username: string;
   room: Room = new Room();
@@ -28,14 +29,14 @@ export class GameComponent implements OnInit {
   card:boolean = true;
   img: Observable<any[]>;
   rooms: Observable<any[]>;
+  popup = false;
   constructor(private route: ActivatedRoute, authService: AuthService, 
-              private db: AngularFirestore, private router: Router, public auth: AuthService) {
+              private db: AngularFirestore, private router: Router, 
+              public auth: AuthService, private modalService: NgbModal) {
     this.img = db.collection('img').valueChanges();
     this.rooms = db.collection('rooms').valueChanges();
-
   }
   ngOnInit() {
-    
     this.roomId = this.route.snapshot.paramMap.get('id');
     this.username = this.route.snapshot.paramMap.get('username');
     this.username = this.username.replace(/\s/g, '');
@@ -44,6 +45,9 @@ export class GameComponent implements OnInit {
       .valueChanges()
       .subscribe((room) => {
         this.room = room;
+        if (this.room.players[0].win || this.room.players[1].win) {
+          this.popup = true;
+        }
         this.myPlayerId = room.players[0].name === this.username ? 0 : 1;
         if (room.players.length === 2) {
           this.message = 'Starting game';
@@ -58,9 +62,24 @@ export class GameComponent implements OnInit {
           }
         }
       });
-    
-    
   }
+  open(content) {
+    this.modalService.open(content);
+  }
+
+  // set var win to false in db
+  setWinFalse() {
+    this.db
+    .collection<Room>('rooms')
+    .valueChanges()
+    .take(1)
+    .subscribe((rooms) => {   
+      this.room.players[0].win = false;
+      this.room.players[1].win = false;
+      this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
+    });
+  }
+  // turn by turn
   test() {
     if (this.room.players[0].name === this.username) {
       this.room.turn = 1;
@@ -69,39 +88,29 @@ export class GameComponent implements OnInit {
     }
     this.db.doc('rooms/' + this.roomId).update(JSON.parse(JSON.stringify(this.room)));
   }
+  // check if it's my turn
   isMyTurn(): boolean {
     return this.room && this.room.turn !== undefined && 
     this.room.players[this.room.turn].name === this.username;
-    
   }
+  // go to home
   mainMenu() {
     this.router.navigate(['home']);
   }
+  // return a random number
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
+
+  // random card to find
   randomCard() {
     let imgbalise;
     this.db
       .collection<Img>('img')
       .valueChanges()
       .take(1)
-      .subscribe((img) => {
-        // if (this.room.players[0].url && this.room.players[0].name === this.username) {
-        //   this.htmlStr = '<img src=' + this.room.players[0].url +
-        //  ' alt = "imgToFind" ><h3>' + this.room.players[0].img + '</h3>';
-        //   this.card = false;
-        //   this.room.turn = 0;
-        // } else if (this.room.players[1].url && this.room.players[1].name === this.username) {
-        //   this.htmlStr = '<img src=' + this.room.players[1].url +
-        //  ' alt = "imgToFind" ><h3>' + this.room.players[1].img + '</h3>';
-        //   this.card = false;
-        //   this.room.turn = 1;
-        // }else {
+      .subscribe((img) => {        
         imgbalise = img[this.getRandomInt(23)];
-        // this.htmlStr = '<img src=' + imgbalise.urlImg +
-        //  ' alt = "imgToFind" ><h3>' + imgbalise.name + '</h3>';
-        // this.card = false;
         this.updateRoom();
         if (this.room.players[0].name === this.username) {
           this.room.players[0].img = imgbalise.name;
@@ -120,24 +129,40 @@ export class GameComponent implements OnInit {
           this.card = false;
           this.room.turn = 1;
         }
-        // }
-        console.log(this.room.players[1].url);
+        this.setWinFalse();
       });
    
   }
+  // update room ?
   updateRoom() {
     this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
   }
-  // value = '';
+  // input q&a
   onEnter(value: string) { 
+    if (this.room.players[0].img.toLowerCase() === value.toLowerCase()) {
+      this.db
+    .collection<Room>('rooms')
+    .valueChanges()
+    .take(1)
+    .subscribe((rooms) => {   
+      this.room.players[0].win = true;
+      this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
+    });
+    } else if (this.room.players[1].img.toLowerCase() === value.toLowerCase()) {
+      this.db
+    .collection<Room>('rooms')
+    .valueChanges()
+    .take(1)
+    .subscribe((rooms) => {   
+      this.room.players[1].win = true;
+      this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
+    });
+    }
     const data = { question:value, answer:null, user:'' };
     this.room.answers.push(data);
     this.test();  
-    // this.room.answers[this.room.answers.length - 1].user = this.username;
-    // this.db.doc<Room>('rooms/' + this.roomId).update(this.room);  
-    console.log(this.username);
-    console.log(this.room.turn);
   }
+  // check if it's my turn to answer
   isMyTurnToAnswer() {
     if (this.room.answers.length > 0 &&
        this.room.answers[this.room.answers.length - 1].user !== this.username &&
@@ -146,14 +171,17 @@ export class GameComponent implements OnInit {
     }
     return false;
   }
+  // send answer to opponent
   sendAnswer(val) {
     this.room.answers[this.room.answers.length - 1].answer = val;
     this.room.answers[this.room.answers.length - 1].user = this.username;
     this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
   }
+  // return last question
   lastQuestion() {
     return this.room.answers[this.room.answers.length - 1].question;    
   }
+   // display q&a
   lastResponse() {
     if (this.room.answers !== undefined) {
       if (this.room.answers[this.room.answers.length - 1].answer !== undefined && 

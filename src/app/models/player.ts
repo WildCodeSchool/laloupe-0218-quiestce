@@ -3,4 +3,5 @@ export class Player {
   value:string;
   img:string;
   url:string;
+  win:boolean;
 }
