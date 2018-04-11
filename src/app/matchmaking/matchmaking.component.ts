@@ -8,6 +8,7 @@ import { Room } from './../models/room';
 import 'rxjs/add/operator/take';
 import { LoginComponent } from '../login/login.component';
 import { AuthService } from './../auth.service';
+import { Subscription } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-matchmaking',
@@ -15,12 +16,19 @@ import { AuthService } from './../auth.service';
   styleUrls: ['./matchmaking.component.scss'],
 })
 export class MatchmakingComponent implements OnInit {
-
+  private authSubscription: Subscription;
   constructor(private authService: AuthService, private db: AngularFirestore,
               private router: Router) { }
 
   ngOnInit() {
-    this.getRooms();
+    this.authSubscription = this.authService.authState.take(1).subscribe((user) => {
+      if (user) {
+        this.getRooms();
+      }
+    });
+  }
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
   }
 
   getRooms() {
@@ -44,10 +52,12 @@ export class MatchmakingComponent implements OnInit {
       }
       const room = new Room();
 
-      room.turn = 1;
+      room.turn = 0;
       room.players = [player];
-      room.players[0].value = '';
+      
       room.answers = [];
+      room.players[0].img = '';
+      room.players[0].url = undefined;
       this.db.collection('rooms')
         .add(JSON.parse(JSON.stringify(room)))
         .then((doc) => {
