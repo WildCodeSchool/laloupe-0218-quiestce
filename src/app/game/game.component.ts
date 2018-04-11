@@ -45,9 +45,6 @@ export class GameComponent implements OnInit {
       .subscribe((room) => {
         this.room = room;
         this.myPlayerId = room.players[0].name === this.username ? 0 : 1;
-        console.log(room.players[0].name);
-        console.log(this.username);
-        
         if (room.players.length === 2) {
           this.message = 'Starting game';
         }
@@ -96,7 +93,6 @@ export class GameComponent implements OnInit {
   }
   // value = '';
   onEnter(value: string) { 
-    console.log(this.room.players[0]);
     const data = { question:value, answer:null, user:'' };
     this.room.answers.push(data);
     this.test();    

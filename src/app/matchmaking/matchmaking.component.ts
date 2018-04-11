@@ -16,7 +16,7 @@ import { AuthService } from './../auth.service';
 })
 export class MatchmakingComponent implements OnInit {
 
-  constructor(private authService: AuthService, private db: AngularFirestore, 
+  constructor(private authService: AuthService, private db: AngularFirestore,
               private router: Router) { }
 
   ngOnInit() {
@@ -26,13 +26,15 @@ export class MatchmakingComponent implements OnInit {
   getRooms() {
     const roomsCollection = this.db.collection<Room>('rooms');
 
-    const snapshot = roomsCollection.snapshotChanges().take(1).subscribe((snap) => {
+    roomsCollection.valueChanges().subscribe((rooms) => { console.log(rooms);});
+
+    roomsCollection.snapshotChanges().take(1).subscribe((snap) => {
       const player = new Player();
       player.name = this.authService.name.replace(/\s/g, '');
+      
       for (const snapshotItem of snap) {
         const roomId = snapshotItem.payload.doc.id;
-        const roomy = snapshotItem.payload.doc.data() as Room;
-
+        const roomy = snapshotItem.payload.doc.data() as Room;   
         if (roomy.players.length === 1) {
           roomy.players.push(player);
           this.db.doc('rooms/' + roomId).update(JSON.parse(JSON.stringify(roomy)));
@@ -40,9 +42,8 @@ export class MatchmakingComponent implements OnInit {
           return;
         }
       }
-
       const room = new Room();
-      
+
       room.turn = 1;
       room.players = [player];
       room.players[0].value = '';
