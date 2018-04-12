@@ -62,7 +62,7 @@ export class GameComponent implements OnInit {
           if (this.room.players[0].win || this.room.players[1].win) {
             this.popup = true;
           }
-          this.message = 'Starting game';
+          //this.message = 'Starting game';
           // if (this.room.players[0].url && this.room.players[0].name === this.username) {
           //   this.htmlStr = '<img class="test" src=' + this.room.players[0].url +
           //    ' alt = "imgToFind" ><h3>' + this.room.players[0].img + '</h3>';
@@ -218,3 +218,49 @@ export class GameComponent implements OnInit {
   }
 }
 
+
+
+// ar app = angular.module("testapp",[]);
+
+// app.factory("DataModel", function() {
+//   var Service = {};
+  
+  
+  
+//   return Service;
+// });
+
+// app.controller("ChatController", function($scope) {
+//   $scope.chatMessages = [];
+  
+//   $scope.formatChat = function(icon,username,text,origDt) {
+//     var chat = {};
+//     chat.icon = icon;
+//     chat.username = username;
+//     chat.text = text;
+//     chat.origDt = origDt;
+//     return chat;
+//   }
+  
+//   $scope.addChat = function() {
+//     if ($scope.newChatMsg != "") {
+//       var chat = $scope.formatChat("http://placehold.it/16x16",
+//                            "steve",
+//                            $scope.newChatMsg,
+//                            new Date());
+       
+//       $scope.chatMessages.push(chat);
+//       $scope.newChatMsg = "";
+//     }
+//     else {
+      
+//     }
+//   }
+  
+// });
+
+// app.filter('reverse', function() {
+//   return function(items) {
+//     return items.slice().reverse();
+//   };
+// });

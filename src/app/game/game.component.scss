@@ -2,6 +2,16 @@
   .test img{
     width: 86px;
     height: 129px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    margin-top: 10px;
+  }
+  .test h3 {
+    color: white;
+    text-align: center;
+    font-family: 'Coustard', serif;
+    font-size: 20px;
   }
 .buttonMenu{
     // margin-top: 5px;
@@ -14,7 +24,7 @@
     font-weight: bold;
     font-family: 'Coustard', serif;
     font-size: 20px;
-    margin-top: 70px;
+    margin-top: 43px;
 }
 .buttonMenu:hover {
     background-color: white;
@@ -47,22 +57,29 @@
     margin-right: auto;
     margin-left: auto;
     display: block;
-    width: 50px;
-    height: 70px;;
+    width: 86px;
+    height: 129px;
+    margin-top: 10px;
+}
+.randomcard h3 {
+  color: white;
+    text-align: center;
+    font-family: 'Coustard', serif;
+    font-size: 20px;
 }
 .randomC{
   margin-right: auto;
     margin-left: auto;
     display: block;
     width: 50px;
-    height: 70px;;
+    height: 70px;
 }
 form{
 	max-width: 500px;
 	margin: 10px auto;
 	border: 1px solid #ccc;
 	background-color: white;
-	height: 65%;
+	height: 60%;
   }
   .msg-wrapper{
 	max-height: 80%;
@@ -88,9 +105,10 @@ form{
   display: flex;
   justify-content: space-around;
 }
-.elementA {
-  margin-bottom: 300px;
-}
+// .btn  {
+//   margin-bottom: 200px;
+//   float: left;
+// }
 .elementB {
   background-color: black;
   opacity: 0.8;
@@ -98,6 +116,11 @@ form{
   margin-top: 20px;
   width: 600px;
   height: 140px;
+  color: white;
+  text-align: center;
+  font-family: 'Coustard', serif;
+  font-size: 20px;
+  padding-top: 40px;
 }
 
 label ul li {
@@ -141,8 +164,8 @@ label ul li {
      font-family: 'Coustard', serif;
    }
     .deck>b {
-    background: black;
-    background: linear-gradient(black, red);
+    //background: black;
+    //background: linear-gradient(black, red);
     border: 5px solid #f8fff9;
     box-sizing: border-box;
      transform: translateX(0%) rotateY(0deg);
@@ -208,14 +231,14 @@ label ul li {
     border: 1px solid #ddd;
     border-radius: 4px;
     background: #fff;
-    background: linear-gradient(#fcfcff, #fff 5%, #fbfbfe 65%, #f3f3f5 100%);
+    //background: linear-gradient(#fcfcff, #fff 5%, #fbfbfe 65%, #f3f3f5 100%);
   }
   
   .deck>u>i {
     display: block;
     margin: 1px 4px 0;
     font: 9px/.9 Arial, Helvetica, sans-serif;
-    color: #a00;
+    //color: #a00;
   }
   
   /* --- BACK CONTENT --- */
@@ -231,14 +254,15 @@ label ul li {
     left: 0;
     top: 0;
     bottom: 0;
-    background: /*url image ici*/center/36px;
+    background: url("http://nsm09.casimages.com/img/2018/04/12//18041204522023832215664277.jpg");
+    background-size: 86px 129px;
     border-radius: inherit;
     opacity: .3;
   }
   
-  .deck>b::after {
-    background-position: calc(50% + 18px) calc(50% + 18px);
-  }
+  // .deck>b::after {
+  //   background-position: calc(50% + 18px) calc(50% + 18px);
+  // }
   
   /* --- ANIMATION AND 3D SETTINGS --- */
   
@@ -304,6 +328,7 @@ label ul li {
   #messageInput {
     width: 80%;
   }
-  .anonyme {
-    margin-top: 10px;
-  }
+  
+.dialogue {
+  color: white;
+}

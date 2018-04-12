@@ -44,7 +44,7 @@
   </div>
     <div class="col-3">
         <div *ngIf="myPlayerId === undefined || !room.players[myPlayerId].url; else bob" class="randomcard">
-          <img class="anonyme" src="http://nsm09.casimages.com/img/2018/04/12//18041210180823832215663875.jpg" alt="cards" (click)="randomCard()">
+          <img src="http://nsm09.casimages.com/img/2018/04/12//18041210291723832215665015.jpg" alt="cards" (click)="randomCard()"><h3>click to change</h3>
         </div>
     <ng-template #bob>
       <!-- <div class="test" [innerHTML]="htmlStr"> -->
@@ -74,7 +74,7 @@
     </div>
   </div>
   <div class="row box2">
-    <div class="col-9">
+    <div class="col-10">
         <div class="container-fluid flexus">
           <div class="elementA">
       <button type="button" class="btn buttonMenu" (click)="rageQuit()">flee the fight</button>
@@ -91,8 +91,12 @@
       <ng-template #authenticated>
         <div *ngIf="auth.user | async as user">
         </div>
+
+
+
+
   <div *ngIf="room && room.players.length > 1">
-    game ready
+    
     <!-- <div *ngIf="card ; else nocard">
       <img src="https://www.papiria.de/WebRoot/Store4/Shops/62463763/51C7/0E28/8CAA/D737/23CA/C0A8/28BB/FAE3/LB1340a_xs.jpg" alt="cards"
         (click)="randomCard()">
@@ -157,3 +161,5 @@
     </div>
   </div>
 </ng-template>
+
+
