@@ -53,23 +53,12 @@ export class GamegotComponent implements OnInit {
       .subscribe((room) => {
         this.room = room;
         this.myPlayerId = room.players[0].name === this.username ? 0 : 1;
-        // this.opponentId = room.players[0].name === this.username ? 1 : 0;
         this.opponentId = room.players[1].name === this.username ? 1 : 0;
         if (room.players.length === 2) {
           if (this.room.players[0].win || this.room.players[1].win) {
             this.popup = true;
           }
           this.message = ' ';
-
-          // if (this.room.players[0].url && this.room.players[0].name === this.username) {
-          //   this.htmlStr = '<img class="test" src=' + this.room.players[0].url +
-          //    ' alt = "imgToFind" ><h3>' + this.room.players[0].img + '</h3>';
-          //   this.card = false;
-          // } else if (this.room.players[1].url && this.room.players[1].name === this.username) {
-          //   this.htmlStr = '<img class="test" src=' + this.room.players[1].url +
-          //    ' alt = "imgToFind"><h3>' + this.room.players[1].img + '</h3>';
-          //   this.card = false;
-          // }
         }
       });
   }
