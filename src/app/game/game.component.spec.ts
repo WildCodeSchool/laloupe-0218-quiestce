@@ -23,3 +23,19 @@ describe('GameComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+
+var $wrap = $('#gameBoard');
+
+$wrap
+.on('click', '.card', function(e) {
+  $(this).toggleClass('hidden');
+  return false;
+})
+.on('mouseover', '.card', function(e) {
+  $(this).addClass('toggle');
+})
+.on('mouseout', '.card', function(e) {
+  $(this).removeClass('toggle');
+});

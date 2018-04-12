@@ -7,15 +7,14 @@
 <ng-template #guest>
   <div class="container">
     <div class="row">
-      <div class="col-8 offset-4">
-        <h3>Hey, GUEST</h3>
-        <p>Login to get started...</p>
-        <ngb-carousel interval="50000">
+      <div class="col-8 offset-2">
+        <h3>Hey, GUEST<br/>login to get started...</h3>
+
+        <ngb-carousel interval="500 000 000" class="carousel">
           <ng-template ngbSlide>
-            <img src="https://picsum.photos/900/500?image=57" alt="Random first slide">>
+            <img src="http://nsm09.casimages.com/img/2018/04/10//18041004004523832215661187.jpg" alt="Random first slide">
             <div class="carousel-caption">
-              <h3>Third slide label</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+             
             </div>
           </ng-template>
           <ng-template ngbSlide>
@@ -36,6 +35,9 @@
       </div>
     </div>
   </div>
+
+  
+
 </ng-template>
 
 
@@ -45,13 +47,12 @@
     <div class="row">
       <div class="col-8 offset-2">
         <div *ngIf="auth.user | async as user">
-          <h3>Hello, {{ user.displayName }} wanna play an awesome game?</h3>
-          <ngb-carousel interval="50000">
+          <h3>Hello, <span>{{ user.displayName }}</span> wanna play a awesome game?</h3>
+          <ngb-carousel interval="500 000 000" class="carousel">
             <ng-template ngbSlide>
-              <img src="https://picsum.photos/900/500?image=57" alt="Random first slide">
+              <img src="http://nsm09.casimages.com/img/2018/04/10//18041004004523832215661187.jpg" alt="Random first slide">
               <div class="carousel-caption">
-                <h3>first theme</h3>
-                <p>univers LOTR</p>
+                
               </div>
             </ng-template>
             <ng-template ngbSlide>
