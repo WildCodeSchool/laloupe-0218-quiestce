@@ -6,7 +6,9 @@ import { HomeComponent } from './home/home.component';
 import { RulesComponent } from './rules/rules.component';
 import { LoginComponent } from './login/login.component';
 import { MatchmakingComponent } from './matchmaking/matchmaking.component';
+import { MatchmakingotComponent } from './matchmakingot/matchmakingot.component';
 import { GameComponent } from './game/game.component';
+import { GamegotComponent } from './gamegot/gamegot.component';
 
 
 import { AuthGuard } from './auth.guard';
@@ -18,7 +20,9 @@ export const router: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'rules', component: RulesComponent },
     { path: 'matchmaking', component: MatchmakingComponent },
+    { path: 'matchmakingot', component: MatchmakingotComponent },
     { path: 'game/:id/:username', component: GameComponent },
+    { path: 'gamegot/:id/:username', component: GamegotComponent },
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

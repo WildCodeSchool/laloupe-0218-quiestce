@@ -12,11 +12,11 @@ import { AuthService } from '../auth.service';
 import { NgbModal, NgbActiveModal, NgbModule, 
   ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 @Component({
-  selector: 'app-game',
-  templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss'],
+  selector: 'app-gamegot',
+  templateUrl: './gamegot.component.html',
+  styleUrls: ['./gamegot.component.scss'],
 })
-export class GameComponent implements OnInit {
+export class GamegotComponent implements OnInit {
   closeResult: string;
   message = 'Attente d\'un joueur';
   msg;
@@ -41,7 +41,7 @@ export class GameComponent implements OnInit {
     this.username = this.route.snapshot.paramMap.get('username');
     this.username = this.username.replace(/\s/g, '');
     this.db
-    .collection('img')
+    .collection('imgot')
     .valueChanges()
     .subscribe((img) => {
       this.img = img;
@@ -112,7 +112,7 @@ export class GameComponent implements OnInit {
   randomCard() {
     let imgbalise;
     this.db
-      .collection<Img>('img')
+      .collection<Img>('imgot')
       .valueChanges()
       .take(1)
       .subscribe((img) => {        
