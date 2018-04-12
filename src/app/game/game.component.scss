@@ -16,7 +16,7 @@
     color: black;
 }
 .block {
-    height: 630px;
+    height: 470px;
 }
 .wrapper {
 		perspective: 3000px;
@@ -48,7 +48,7 @@ form{
 	margin: 10px auto;
 	border: 1px solid #ccc;
 	background-color: white;
-	height: 70%;
+	height: 65%;
   }
   .msg-wrapper{
 	max-height: 80%;
@@ -72,17 +72,18 @@ form{
 
 .flexus {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .elementA {
-  
+  margin-bottom: 300px;
 }
 .elementB {
   background-color: black;
   opacity: 0.8;
   border-radius: 10px;
-  margin-top: 40px;
+  margin-top: 20px;
   width: 600px;
+  height: 140px;
 }
 
 label ul li {
@@ -95,7 +96,7 @@ label ul li {
   
   .table {
     position: relative;
-    width: 1100px;
+    width: 900px;
     height: 500px;
     margin: 0 auto;
     padding: 18px 18px 30px;
@@ -109,7 +110,7 @@ label ul li {
     vertical-align: middle;
   }
    .deck a {
-     font-size: 14px;
+     font-size: 12px;
      color: black;
      font-family: 'Coustard', serif;
    }
@@ -118,13 +119,13 @@ label ul li {
   .deck>input,
   .deck>u,
   .deck>b {
-    width: 97px;
-    height: 146px;
+    width: 86px;
+    height: 129px;
     position: relative;
   }
   
   .deck>input {
-    margin: 0 25px 7px;
+    margin: 0 10px 7px;
     z-index: 999;
     cursor: pointer;
     opacity: 0;
@@ -156,8 +157,8 @@ label ul li {
   
   .deck>u>img {
     display: block;
-    width: 85px;
-    height: 110px;
+    width: 74px;
+    height: 95px;
     margin: 5px auto 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
