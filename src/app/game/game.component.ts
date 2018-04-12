@@ -176,5 +176,15 @@ export class GameComponent implements OnInit {
     ' Reponse: Non';
     }
   }
-
+  rageQuit() {
+    if (this.room.players[0].name === this.username) {
+      this.room.players[0].win = true;
+      this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
+      this.router.navigate(['home']);
+    } else if (this.room.players[1].name === this.username) {
+      this.room.players[1].win = true;
+      this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
+      this.router.navigate(['home']);
+    }
+  }
 }
