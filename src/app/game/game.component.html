@@ -1,12 +1,21 @@
 <div class="container-fluid">
+
   <div class="row block">
     <div class='col-9 box1'>
-    <div class="table">
-    <div class="deck">
-    <!--<input type="checkbox" checked><u><img alt="" src="http://lorempixel.com/200/200/abstract"><b>Click<br>to<br>Flip</b></u><b></b>-->
+      
+     
+<div class="table">
+ 
+  <div class="deck" *ngFor="let item of img; let i = index">
+    <input type="checkbox" checked="checked" [disabled]="item.disabled" (change)="isLoose(i);"><u><img alt="" [src]="item.urlImg"><a>{{item.name}}</a></u><b></b>
+</div>
+ 
+  <!-- <div class="deck">
 
-    <br><input type="checkbox" checked="checked"><u><img src="http://nsm09.casimages.com/img/2018/04/11//18041106355923832215662943.jpg" alt="0" ><a>yoda</a></u><b>
-    </b><input type="checkbox" checked="checked"><u><img alt="" src="http://nsm09.casimages.com/img/2018/04/11//18041106355823832215662942.jpg"><a>palpatine</a></u><b>
+    <input type="checkbox" checked><u><img alt="" src="http://lorempixel.com/200/200/abstract"><b>Click<br>to<br>Flip</b></u><b></b>
+
+    <br><input type="checkbox" [checked]="checked" (click)="checked = 'checked'"><u><img src="http://nsm09.casimages.com/img/2018/04/11//18041106355923832215662943.jpg" alt="0" ><a>yoda</a></u><b></b>
+    <input type="checkbox" checked="checked" [disabled]="sizes[0].disabled" (change)="disableCard($event, 0)"><u><img alt="" [src]="sizes[0].src"><a>palpatine</a></u><b>
     </b><input type="checkbox" checked="checked"><u><img alt="" src="http://nsm09.casimages.com/img/2018/04/11//18041106355423832215662933.jpg"><a>stormtrooper</a></u><b>
     </b><input type="checkbox" checked="checked"><u><img alt="" src="http://nsm09.casimages.com/img/2018/04/11//18041106355423832215662930.jpg"><a>darth vader</a> </u><b>
     </b><input type="checkbox" checked="checked"><u><img alt="" src="http://nsm09.casimages.com/img/2018/04/11//18041106355423832215662931.png"><a>hux</a></u><b>
@@ -30,20 +39,19 @@
     </b><input type="checkbox" checked="checked"><u><img alt="" src="http://nsm09.casimages.com/img/2018/04/11//18041106355523832215662935.png"><a>leia</a></u><b>
     </b><input type="checkbox" checked="checked"><u><img alt="" src="http://nsm09.casimages.com/img/2018/04/11//18041106355523832215662934.png"><a>kylo ren</a></u><b>
     </b>
-  </div>
+  </div> -->
 </div>
   </div>
     <div class="col-3">
-    <div *ngIf="auth.user | async as user">
-        </div>
-    <div *ngIf="room && room.players.length > 1">
-        <div *ngIf="card ; else nocard" class="randomcard">
+        <div *ngIf="myPlayerId === undefined || !room.players[myPlayerId].url; else bob" class="randomcard">
           <img class="anonyme" src="http://nsm09.casimages.com/img/2018/04/12//18041210180823832215663875.jpg" alt="cards" (click)="randomCard()">
         </div>
-        <ng-template #nocard>
-          <div [innerHTML]="htmlStr" class="randomcard"></div>
-        </ng-template> 
-        </div>
+    <ng-template #bob>
+      <!-- <div class="test" [innerHTML]="htmlStr"> -->
+      <div class="test" >
+      <img [src]="room.players[myPlayerId].url" alt = "imgToFind" class="test"><h3>{{room.players[myPlayerId].img}}</h3>
+      </div>
+    </ng-template>
         <form>
             <div class="row textus">
               <div class="col-12">
@@ -66,7 +74,7 @@
     </div>
   </div>
   <div class="row box2">
-    <div class="col-7">
+    <div class="col-9">
         <div class="container-fluid flexus">
           <div class="elementA">
       <button type="button" class="btn buttonMenu" (click)="rageQuit()">flee the fight</button>
@@ -85,14 +93,6 @@
         </div>
   <div *ngIf="room && room.players.length > 1">
     game ready
-     <!-- <div *ngIf="card ; else nocard" class="randomcard">
-          <img class="anonyme" src="http://nsm09.casimages.com/img/2018/04/12//18041210180823832215663875.jpg" alt="cards" (click)="randomCard()">
-        </div>
-        <ng-template #nocard>
-          <div [innerHTML]="htmlStr" class="randomcard"></div>
-        </ng-template>  -->
-
-
     <!-- <div *ngIf="card ; else nocard">
       <img src="https://www.papiria.de/WebRoot/Store4/Shops/62463763/51C7/0E28/8CAA/D737/23CA/C0A8/28BB/FAE3/LB1340a_xs.jpg" alt="cards"
         (click)="randomCard()">
@@ -128,13 +128,17 @@
   <p>
     {{message}}
   </p>
-  <div *ngIf="popup" id="exampleModalLive" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel"
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+    </div>
+    </div>
+  <div *ngIf="popup" id="exampleModalLive" class="modal fade show mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel"
     style="padding-right: 10px; display: block;">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">AND THE WINNER IS ...</h4>
-          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <button type="button" class="close" aria-label="Close" (click)="mainMenu()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>

@@ -24,16 +24,19 @@ export class GameComponent implements OnInit {
   username: string;
   room: Room = new Room();
   myPlayerId: number;
+  opponentId: number;
   imgbalise: string = '';
-  htmlStr: string = '';
-  card:boolean = true;
-  img: Observable<any[]>;
+  // htmlStr: string = '';
+  // card:boolean = true;
+  img;
+  // img: Observable<any[]>;
   rooms: Observable<any[]>;
   popup = false;
+
   constructor(private route: ActivatedRoute, authService: AuthService, 
               private db: AngularFirestore, private router: Router, 
               public auth: AuthService, private modalService: NgbModal) {
-    this.img = db.collection('img').valueChanges();
+    // this.img = db.collection('img').valueChanges();
     this.rooms = db.collection('rooms').valueChanges();
   }
   ngOnInit() {
@@ -41,42 +44,37 @@ export class GameComponent implements OnInit {
     this.username = this.route.snapshot.paramMap.get('username');
     this.username = this.username.replace(/\s/g, '');
     this.db
+    .collection('img')
+    .valueChanges()
+    .subscribe((img) => {
+      this.img = img;
+    });
+
+    this.db
       .doc<Room>('rooms/' + this.roomId)
       .valueChanges()
       .subscribe((room) => {
         this.room = room;
         this.myPlayerId = room.players[0].name === this.username ? 0 : 1;
+        this.opponentId = room.players[0].name === this.username ? 1 : 0;
         if (room.players.length === 2) {
           if (this.room.players[0].win || this.room.players[1].win) {
             this.popup = true;
           }
           this.message = 'Starting game';
-          if (this.room.players[0].url && this.room.players[0].name === this.username) {
-            this.htmlStr = '<img src=' + this.room.players[0].url +
-             ' alt = "imgToFind" ><h3>' + this.room.players[0].img + '</h3>';
-            this.card = false;
-          } else if (this.room.players[1].url && this.room.players[1].name === this.username) {
-            this.htmlStr = '<img src=' + this.room.players[1].url +
-             ' alt = "imgToFind" ><h3>' + this.room.players[1].img + '</h3>';
-            this.card = false;
-          }
+          // if (this.room.players[0].url && this.room.players[0].name === this.username) {
+          //   this.htmlStr = '<img class="test" src=' + this.room.players[0].url +
+          //    ' alt = "imgToFind" ><h3>' + this.room.players[0].img + '</h3>';
+          //   this.card = false;
+          // } else if (this.room.players[1].url && this.room.players[1].name === this.username) {
+          //   this.htmlStr = '<img class="test" src=' + this.room.players[1].url +
+          //    ' alt = "imgToFind"><h3>' + this.room.players[1].img + '</h3>';
+          //   this.card = false;
+          // }
         }
       });
-
-      
-    const $wrap = $('#gameBoard');
-    $wrap
-      .on('click', '.card', function (e) {
-        $(this).toggleClass('hidden');
-        return false;
-      })
-      .on('mouseover', '.card', function (e) {
-        $(this).addClass('toggle');
-      })
-      .on('mouseout', '.card', function (e) {
-        $(this).removeClass('toggle');
-      });
   }
+
   open(content) {
     this.modalService.open(content);
   }
@@ -103,6 +101,8 @@ export class GameComponent implements OnInit {
   }
   // go to home
   mainMenu() {
+    console.log('cc');
+    
     this.router.navigate(['home']);
   }
   // return a random number
@@ -124,25 +124,39 @@ export class GameComponent implements OnInit {
           this.room.players[0].img = imgbalise.name;
           this.room.players[0].url = imgbalise.urlImg;
           this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
-          this.htmlStr = '<img class="anonyme randomC" src=' + this.room.players[0].url +
-         ' alt = "imgToFind" ><h3>' + this.room.players[0].img + '</h3>';
-          this.card = false;
+          // this.htmlStr = '<img src=' + this.room.players[0].url +
+        //  ' alt = "imgToFind" class="test"><h3>' + this.room.players[0].img + '</h3>';
+          // this.card = false;
           
         } else if (this.room.players[1].name === this.username) {
           this.room.players[1].img = imgbalise.name;
           this.room.players[1].url = imgbalise.urlImg;
           this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
-          this.htmlStr = '<img class="anonyme randomC" src=' + this.room.players[1].url +
-         ' alt = "imgToFind" ><h3>' + this.room.players[1].img + '</h3>';
-          this.card = false;
+          // this.htmlStr = '<img src=' + this.room.players[1].url +
+        //  ' alt = "imgToFind" class="test"><h3>' + this.room.players[1].img + '</h3>';
+          // this.card = false;
           
         }
         this.setWinFalse();
       });
     console.log(this.img[1].urlImg);
   }
-  
-  // update room ?
+  isLoose(i) {    
+
+    if (this.room && this.room.players.length > 1) {
+      this.img[i].disabled = true;
+    
+      if (this.img.reduce((acc, el) => {
+        return acc && el.disabled ? el.disabled : false;
+      })) {
+        this.room.players[this.opponentId].win = true;
+        this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
+      }
+    }
+
+    
+  }  
+ // update room ?
   updateRoom() {
     this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
   }

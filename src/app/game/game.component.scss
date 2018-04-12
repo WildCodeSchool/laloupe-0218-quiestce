@@ -1,3 +1,8 @@
+
+  .test img{
+    width: 86px;
+    height: 129px;
+  }
 .buttonMenu{
     // margin-top: 5px;
     padding-left: 70px;
@@ -28,6 +33,7 @@
     border-top: none;
     border-bottom: none;
     border-left: none;
+    height: 470px;
     //background-image: url("http://nsm09.casimages.com/img/2018/04/12//18041210021723832215663868.jpg");
     //background-size: cover;
 }
@@ -41,13 +47,15 @@
     margin-right: auto;
     margin-left: auto;
     display: block;
-    width: 100px;
+    width: 50px;
+    height: 70px;;
 }
 .randomC{
   margin-right: auto;
     margin-left: auto;
     display: block;
-    width: 100px;
+    width: 50px;
+    height: 70px;;
 }
 form{
 	max-width: 500px;
@@ -99,10 +107,13 @@ label ul li {
    float: right;
    bottom: 30px;
  }
-  
+  .mymodal {
+    z-index: 10000 !important;
+  }
+
   .table {
     position: relative;
-    width: 900px;
+    width: 1000px;
     height: 500px;
     margin: 0 auto;
     padding: 18px 18px 30px;
@@ -110,18 +121,47 @@ label ul li {
     line-height: 0;
     box-sizing: border-box;
   }
-  
+
+  // .deck {
+  //   display: table;
+  //   vertical-align: middle;
+  //   perspective: 1500px;
+  // }
+
   .deck {
-    display: table-cell;
+    z-index: 0;
+    position: relative;
+    display: inline;
     vertical-align: middle;
+    perspective: 1500px;
   }
    .deck a {
      font-size: 12px;
      color: black;
      font-family: 'Coustard', serif;
    }
+    .deck>b {
+    background: black;
+    background: linear-gradient(black, red);
+    border: 5px solid #f8fff9;
+    box-sizing: border-box;
+     transform: translateX(0%) rotateY(0deg);
+    transform-origin: 130% center;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
+    filter: brightness(1);
+  }
   /* --- CARD SETTINGS --- */
-  
+  .deck>u {
+    font: bold 11px/1 Arial, Helvetica, sans-serif;
+    color: #148;
+    background: white;
+    text-decoration: none;
+    transform: translateX(160%) rotateY(-180deg);
+    transform-origin: -30% center;
+    box-shadow: 130px 30px 40px -20px rgba(0, 0, 0, 0);
+    filter: brightness(3);
+  }
+
   .deck>input,
   .deck>u,
   .deck>b {
@@ -132,7 +172,7 @@ label ul li {
   
   .deck>input {
     margin: 0 10px 7px;
-    z-index: 999;
+    z-index: 99;
     cursor: pointer;
     opacity: 0;
     box-shadow: 10px 5px 5px black;
@@ -150,16 +190,15 @@ label ul li {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+     transition: all .8s;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    z-index: 0;
   }
   
   /* --- FRONT CONTENT --- */
   
-  .deck>u {
-    font: bold 11px/1 Arial, Helvetica, sans-serif;
-    color: #148;
-    background: white;
-    text-decoration: none;
-  }
+  
   
   .deck>u>img {
     display: block;
@@ -181,12 +220,7 @@ label ul li {
   
   /* --- BACK CONTENT --- */
   
-  .deck>b {
-    background: black;
-    background: linear-gradient(black, red);
-    border: 5px solid #f8fff9;
-    box-sizing: border-box;
-  }
+ 
   
   .deck>b::before,
   .deck>b::after {
@@ -208,38 +242,20 @@ label ul li {
   
   /* --- ANIMATION AND 3D SETTINGS --- */
   
-  .deck {
-    perspective: 1500px;
-  }
-  
-  .deck>u,
-  .deck>b {
-    transition: all .8s;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    z-index: 0;
-  }
   
   .deck>input:checked + u,
   .deck>input:checked + u + b {
-    z-index: 100;
+    z-index: 10;
   }
   
   .deck>input:focus + u,
   .deck>input:focus + u + b {
     transition-property:  transform, filter, box-shadow; /* Exclude z-index to immediately overlay */
     outline: 0;
-    z-index: 900;
+    z-index: 90;
   }
   
   /* --- FRONT ANIMATION --- */
-  
-  .deck>u {
-    transform: translateX(160%) rotateY(-180deg);
-    transform-origin: -30% center;
-    box-shadow: 130px 30px 40px -20px rgba(0, 0, 0, 0);
-    filter: brightness(3);
-  }
   
   .deck>input:checked + u {
     transform: translateX(0%) rotateY(0deg);
@@ -248,13 +264,6 @@ label ul li {
   }
   
   /* --- BACK ANIMATION --- */
-  
-  .deck>b {
-    transform: translateX(0%) rotateY(0deg);
-    transform-origin: 130% center;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
-    filter: brightness(1);
-  }
   
   .deck>input:checked + u + b {
     transform: translateX(-160%) rotateY(180deg);
