@@ -69,15 +69,9 @@ export class GameComponent implements OnInit {
 
   // set var win to false in db
   setWinFalse() {
-    // this.db
-    // .collection<Room>('rooms')
-    // .valueChanges()
-    // .take(1)
-    // .subscribe((rooms) => {   
     this.room.players[0].win = false;
     this.room.players[1].win = false;
     this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
-    // });
   }
   // turn by turn
   test() {
@@ -138,26 +132,14 @@ export class GameComponent implements OnInit {
   updateRoom() {
     this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
   }
-  // input q&a
+  // input question
   onEnter(value: string) { 
-    if (this.room.players[0].img.toLowerCase() === value.toLowerCase()) {
-    //   this.db
-    // .collection<Room>('rooms')
-    // .valueChanges()
-    // .take(1)
-    // .subscribe((rooms) => {   
+    if (this.room.players[0].img.toLowerCase() === value.toLowerCase()) {  
       this.room.players[0].win = true;
       this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
-    // });
-    } else if (this.room.players[1].img.toLowerCase() === value.toLowerCase()) {
-    //   this.db
-    // .collection<Room>('rooms')
-    // .valueChanges()
-    // .take(1)
-    // .subscribe((rooms) => {   
+    } else if (this.room.players[1].img.toLowerCase() === value.toLowerCase()) { 
       this.room.players[1].win = true;
       this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
-    // });
     }
     const data = { question:value, answer:null, user:'' };
     this.room.answers.push(data);
@@ -192,7 +174,6 @@ export class GameComponent implements OnInit {
       } 
       return 'Question: ' + this.room.answers[this.room.answers.length - 1].question +
     ' Reponse: Non';
-      
     }
   }
 
