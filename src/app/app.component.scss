@@ -41,7 +41,9 @@ span.Buttontext {
 .row {
  width: 100%;
  }
-
+.container-fluid {
+  background-color: black;
+}
 nav .container-fluid {
   display: flex;
   justify-content: space-between;
@@ -58,9 +60,7 @@ ul {
 ul link {
   color: white;
 }
-.container-fluid {
-  background-color: black;
-}
+
 .team {
  bottom: 0;
  position: absolute;

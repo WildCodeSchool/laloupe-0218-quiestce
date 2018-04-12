@@ -49,6 +49,20 @@ export class GameComponent implements OnInit {
           this.message = 'Starting game';
         }
       });
+
+      
+    const $wrap = $('#gameBoard');
+    $wrap
+      .on('click', '.card', function (e) {
+        $(this).toggleClass('hidden');
+        return false;
+      })
+      .on('mouseover', '.card', function (e) {
+        $(this).addClass('toggle');
+      })
+      .on('mouseout', '.card', function (e) {
+        $(this).removeClass('toggle');
+      });
   }
   test() {
     if (this.room.players[0].name === this.username) {
@@ -125,5 +139,6 @@ export class GameComponent implements OnInit {
     ' Reponse: Non';
     }
   }
+
 }
 
