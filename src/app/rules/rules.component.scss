@@ -1,3 +1,49 @@
-p{
-    size: 2em;
-}
+
+.container-fluid {
+    background: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/4w8qfPNhgilfsnun8/stars-slowly-twinkle-in-the-night-sky_ejvleuenl__S0000.jpg");
+    color: #FECC00;
+    font-family: 'Lato';
+    text-shadow: 0px 0px 4px darken(#FECC00, 5%);
+    font-weight: 700;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+.crawl {
+    position: absolute;
+    transform: perspective(320px) rotateX(30deg);
+    transform-origin: 50% 100%;
+    width: 100%;
+    height: 30em;
+    bottom: 0;
+    font-size: 7.3vw;
+    text-align: justify;
+  }
+  
+  .wrapper {
+    position: absolute;
+    top: 100%;
+    animation: scroll 70s linear 0s infinite;
+  }
+  
+  .pre-text {
+    text-align: center;
+    //color: yellow;
+
+  } 
+  h1 {
+    font-size: 6vw;
+  }
+  h2 {
+    font-size: 9vw;
+  }
+  //p {
+     // color: yellow;
+  //}
+  
+  @keyframes scroll {
+      0% { top: 100%; }
+      50% { top: 0%; }
+    100% { top: -140% }
+  }

@@ -1,3 +1,48 @@
+
+
+
 h3{
     size: 2em;
+}
+.carousel  {
+    display: block;
+    margin-right: auto; 
+    margin-left: auto;
+    margin-top: 5%;
+}
+img {
+    border-radius: 10px;
+    width: 100%;
+}
+h3 {
+    margin-top: 5%;
+    text-align: center;
+    font-family: 'Coustard', serif;
+    color: white;
+    font-size: 20px;
+    background-color: black;
+    border-radius: 10px;
+    opacity: 0.6;
+    padding: 20px;
+}
+h3 span {
+    font-weight: bold;
+}
+
+.btn {
+    margin-top: 3%;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    font-family: 'Coustard', serif;
+    font-size: 20px;
+}
+
+.btn:hover {
+    background-color: white;
+    color: black;
 }

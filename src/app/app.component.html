@@ -9,26 +9,34 @@
 <ng-template #guest>
   <div class="container-fluid">
     <div class="row">
-      <nav class="navbar navbar-expand">
-        <ul class="navbar-nav offset-5">
-          <li class="nav-item active col-4">
-            <a class="nav-link" routerLink="home">Home</a>
-          </li>
-          <li class="nav-item active col-4">
-            <a class="nav-link" routerLink="rules">Rules</a>
-          </li>
-          <li class="nav-item active col-4">
+      
+      <div class="col-6">
+          <a target="_top" href="http://www.flamingtext.com/" ><img src="https://blog.flamingtext.com/blog/2018/04/10/flamingtext_com_1523367479_305821428.png" alt="Logo Design by FlamingText.com" title="Logo Design by FlamingText.com"></a>
+      </div>
+      <div class="col-6">
+      
+        <div class="container-fluid navus">
+        
+          <div class="element1">
+            <a class="nav-link link" routerLink="home">Home</a>
+          </div>
+          <div class="element1">
+            <a class="nav-link link" routerLink="rules">Rules</a>
+          </div>
+          <div class="element1">
             <div (click)="auth.googleLogin()">
               <div class="Custom-Btn customGPlusSignIn">
                 <span class="icon"></span>
                 <span class="Buttontext">Sign up</span>
               </div>
             </div>
-          </li>
-        </ul>
-      </nav>
+          </div>
+        </div>
+     
     </div>
+  
   </div>
+</div>
 </ng-template>
 
 
@@ -37,34 +45,44 @@
   <div *ngIf="auth.user | async as user">
     <div class="container-fluid">
       <div class="row">
-        <nav class="navbar navbar-expand">
-          <ul class="navbar-nav col-12">
-            <li class="nav-item active col-3 offset-2">
+        <div class="col-6">
+            <a target="_top" href="http://www.flamingtext.com/" ><img src="https://blog.flamingtext.com/blog/2018/04/10/flamingtext_com_1523367479_305821428.png"  alt="Logo Design by FlamingText.com" title="Logo Design by FlamingText.com"></a>
+        </div>
+
+        <div class="col-6">
+
+          <div class="container-fluid navus">
+          
+            <div class="element1">
               <a class="nav-link" routerLink="home">Home</a>
-            </li>
-            <li class="nav-item col-3">
+            </div>
+            <div class="element1">
               <a class="nav-link" routerLink="rules">Rules</a>
-            </li>
-            <li class="nav-item col-5">
-              <span>
+            </div>
+            <div class="element1">
+              <span class="username">
                 <img class="imgGoogle" src="{{user.photoURL}}" alt="img user"> {{ user.displayName }}
               </span>
-            </li>
-            <li class="nav-item col-3">
+            </div>
+            <div class="element1">
               <div (click)="auth.signOut()">
                 <div class="Custom-Btn customGPlusSignIn">
                   <span class="icon"></span>
                   <span class="Buttontext">Sign out</span>
                 </div>
               </div>
-            </li>
-          </ul>
-        </nav>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </ng-template>
 
+<footer>
 
+<p class="team">MADE WITH <span class="heart">❤</span> BY OUR TEAM</p>
+
+</footer>
 
 <router-outlet></router-outlet>

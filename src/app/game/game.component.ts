@@ -62,6 +62,20 @@ export class GameComponent implements OnInit {
           }
         }
       });
+
+      
+    const $wrap = $('#gameBoard');
+    $wrap
+      .on('click', '.card', function (e) {
+        $(this).toggleClass('hidden');
+        return false;
+      })
+      .on('mouseover', '.card', function (e) {
+        $(this).addClass('toggle');
+      })
+      .on('mouseout', '.card', function (e) {
+        $(this).removeClass('toggle');
+      });
   }
   open(content) {
     this.modalService.open(content);
@@ -188,3 +202,4 @@ export class GameComponent implements OnInit {
     }
   }
 }
+
