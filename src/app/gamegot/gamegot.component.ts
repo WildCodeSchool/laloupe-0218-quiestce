@@ -51,13 +51,13 @@ export class GamegotComponent implements OnInit {
       .doc<Room>('rooms/' + this.roomId)
       .valueChanges()
       .subscribe((room) => {
-        this.room = room;
+        this.room = room; 
         this.myPlayerId = room.players[0].name === this.username ? 0 : 1;
         // this.opponentId = room.players[0].name === this.username ? 1 : 0;
         this.opponentId = room.players[1].name === this.username ? 1 : 0;
         if (room.players.length === 2) {
           if (this.room.players[0].win || this.room.players[1].win) {
-            this.popup = true;
+            this.popup = true; 
           }
           this.message = ' ';
           // if (this.room.players[0].url && this.room.players[0].name === this.username) {
