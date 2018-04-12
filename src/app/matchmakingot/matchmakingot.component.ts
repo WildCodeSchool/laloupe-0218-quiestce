@@ -11,11 +11,11 @@ import { AuthService } from './../auth.service';
 import { Subscription } from 'rxjs/Rx';
 
 @Component({
-  selector: 'app-matchmaking',
-  templateUrl: './matchmaking.component.html',
-  styleUrls: ['./matchmaking.component.scss'],
+  selector: 'app-matchmakingot',
+  templateUrl: './matchmakingot.component.html',
+  styleUrls: ['./matchmakingot.component.scss'],
 })
-export class MatchmakingComponent implements OnInit {
+export class MatchmakingotComponent implements OnInit {
   private authSubscription: Subscription;
   constructor(private authService: AuthService, private db: AngularFirestore,
               private router: Router) { }
@@ -34,11 +34,9 @@ export class MatchmakingComponent implements OnInit {
   getRooms() {
     const roomsCollection = this.db.collection<Room>('rooms');
 
-    this.db.collection('rooms', ref => ref.where('turn', '==', 0))
-    .snapshotChanges().take(1).subscribe((snap) => {
+    roomsCollection.valueChanges().subscribe((rooms) => { console.log(rooms);});
 
-
-    // roomsCollection.snapshotChanges().take(1).subscribe((snap) => {
+    roomsCollection.snapshotChanges().take(1).subscribe((snap) => {
       const player = new Player();
       player.name = this.authService.name.replace(/\s/g, '');
       
@@ -48,7 +46,7 @@ export class MatchmakingComponent implements OnInit {
         if (roomy.players.length === 1) {
           roomy.players.push(player);
           this.db.doc('rooms/' + roomId).update(JSON.parse(JSON.stringify(roomy)));
-          this.router.navigate(['game', roomId, player.name]);
+          this.router.navigate(['gamegot', roomId, player.name]);
           return;
         }
       }
@@ -63,7 +61,7 @@ export class MatchmakingComponent implements OnInit {
       this.db.collection('rooms')
         .add(JSON.parse(JSON.stringify(room)))
         .then((doc) => {
-          this.router.navigate(['game', doc.id, player.name]);
+          this.router.navigate(['gamegot', doc.id, player.name]);
         });
     });
   }

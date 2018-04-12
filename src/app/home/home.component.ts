@@ -18,5 +18,8 @@ export class HomeComponent implements OnInit {
   createGame() {
     this.router.navigate(['matchmaking']);
   }
+  createGamegot() {
+    this.router.navigate(['matchmakingot']);
+  }
 
 }

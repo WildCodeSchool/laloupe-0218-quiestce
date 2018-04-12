@@ -12,11 +12,11 @@ import { AuthService } from '../auth.service';
 import { NgbModal, NgbActiveModal, NgbModule, 
   ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 @Component({
-  selector: 'app-game',
-  templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss'],
+  selector: 'app-gamegot',
+  templateUrl: './gamegot.component.html',
+  styleUrls: ['./gamegot.component.scss'],
 })
-export class GameComponent implements OnInit {
+export class GamegotComponent implements OnInit {
   closeResult: string;
   message = 'Attente d\'un joueur';
   msg;
@@ -41,7 +41,7 @@ export class GameComponent implements OnInit {
     this.username = this.route.snapshot.paramMap.get('username');
     this.username = this.username.replace(/\s/g, '');
     this.db
-    .collection('img')
+    .collection('imgot')
     .valueChanges()
     .subscribe((img) => {
       this.img = img;
@@ -60,7 +60,6 @@ export class GameComponent implements OnInit {
             this.popup = true;
           }
           this.message = ' ';
-
           // if (this.room.players[0].url && this.room.players[0].name === this.username) {
           //   this.htmlStr = '<img class="test" src=' + this.room.players[0].url +
           //    ' alt = "imgToFind" ><h3>' + this.room.players[0].img + '</h3>';
@@ -113,7 +112,7 @@ export class GameComponent implements OnInit {
   randomCard() {
     let imgbalise;
     this.db
-      .collection<Img>('img')
+      .collection<Img>('imgot')
       .valueChanges()
       .take(1)
       .subscribe((img) => {        
@@ -216,49 +215,3 @@ export class GameComponent implements OnInit {
   }
 }
 
-
-
-// ar app = angular.module("testapp",[]);
-
-// app.factory("DataModel", function() {
-//   var Service = {};
-  
-  
-  
-//   return Service;
-// });
-
-// app.controller("ChatController", function($scope) {
-//   $scope.chatMessages = [];
-  
-//   $scope.formatChat = function(icon,username,text,origDt) {
-//     var chat = {};
-//     chat.icon = icon;
-//     chat.username = username;
-//     chat.text = text;
-//     chat.origDt = origDt;
-//     return chat;
-//   }
-  
-//   $scope.addChat = function() {
-//     if ($scope.newChatMsg != "") {
-//       var chat = $scope.formatChat("http://placehold.it/16x16",
-//                            "steve",
-//                            $scope.newChatMsg,
-//                            new Date());
-       
-//       $scope.chatMessages.push(chat);
-//       $scope.newChatMsg = "";
-//     }
-//     else {
-      
-//     }
-//   }
-  
-// });
-
-// app.filter('reverse', function() {
-//   return function(items) {
-//     return items.slice().reverse();
-//   };
-// });
