@@ -25,12 +25,12 @@
     </ng-template>
 
     <div *ngIf="isMyTurn(); else elseBlock">
-      my turn
-      <button type="button" (click)="test()">test</button>
     </div>
     <ng-template #elseBlock>
+    Opponent turn<br> 
       {{lastResponse()}}
-      <br> notmyturn
+      <!-- <img src="{{this.img[1].urlImg}}" alt="cards"
+        > -->
     </ng-template>
 
     <div *ngIf="isMyTurn() ;else question">
@@ -49,7 +49,6 @@
     </div>
     <ng-template #question>
       <p>{{value}}</p>
-      notMyTurn
     </ng-template>
   </div>
   <p>
