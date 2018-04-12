@@ -124,7 +124,7 @@ export class GameComponent implements OnInit {
           this.room.players[0].img = imgbalise.name;
           this.room.players[0].url = imgbalise.urlImg;
           this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
-          this.htmlStr = '<img src=' + this.room.players[0].url +
+          this.htmlStr = '<img class="anonyme randomC" src=' + this.room.players[0].url +
          ' alt = "imgToFind" ><h3>' + this.room.players[0].img + '</h3>';
           this.card = false;
           
@@ -132,7 +132,7 @@ export class GameComponent implements OnInit {
           this.room.players[1].img = imgbalise.name;
           this.room.players[1].url = imgbalise.urlImg;
           this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
-          this.htmlStr = '<img src=' + this.room.players[1].url +
+          this.htmlStr = '<img class="anonyme randomC" src=' + this.room.players[1].url +
          ' alt = "imgToFind" ><h3>' + this.room.players[1].img + '</h3>';
           this.card = false;
           

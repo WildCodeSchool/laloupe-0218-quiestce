@@ -37,8 +37,14 @@
 
 }
 
-#randomcard img{
+.randomcard img{
     margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width: 100px;
+}
+.randomC{
+  margin-right: auto;
     margin-left: auto;
     display: block;
     width: 100px;
@@ -289,6 +295,6 @@ label ul li {
   #messageInput {
     width: 80%;
   }
-  #anonyme {
+  .anonyme {
     margin-top: 10px;
   }
