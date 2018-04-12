@@ -59,7 +59,9 @@ export class AuthService {
               this.updateUserData(credential.user);
             });
   }
-
+  get authState() {
+    return this.afAuth.authState;
+  }
 
   private updateUserData(user) {
         // Sets user data to firestore on login

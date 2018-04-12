@@ -40,10 +40,6 @@
 </div>
       
   </div>
-
-    
-
-
     <div class="col-3">
 
 
@@ -72,23 +68,12 @@
                   <textarea id='messageInput' placeholder='Message'></textarea></li>
                   <li><input type="button" value="send"></li>
                 </ul>
-                </label>
-                
+                </label>           
               </div>
-            </div>
-          
+            </div>       
           </form>
-
-
-
     </div>
-
-
-
-
-
   </div>
-
   <div class="row box2">
     <div class="col-7">
 
@@ -118,55 +103,75 @@
         <div *ngIf="auth.user | async as user">
         </div>
       
-        <div *ngIf="room && room.players.length > 1" class="texteee">
-          game ready
-          
-          <ng-template #nocard>
-              <div [innerHTML]="htmlStr"></div>
-          </ng-template>
-      
-          <div *ngIf="isMyTurn(); else elseBlock" class="texteee">
-            my turn
-            <button type="button" (click)="test()">test</button>
-          </div>
-          <ng-template #elseBlock>
-              {{lastResponse()}}<br>
-            notmyturn
-          </ng-template>
-      
-          <div *ngIf="isMyTurn() ;else question" class="texteee">
-                  myTurn
-                       
-                  <div *ngIf="isMyTurnToAnswer(); else answer" class="texteee">
-                    {{lastQuestion()}}
-                    <br>
-                      <button (click)="sendAnswer(true)">Oui</button>
-                      <button (click)="sendAnswer(false)">Non</button>
-                  </div>
-                  <ng-template #answer>
-                    
-                      <input #box (keyup.enter)="onEnter(box.value)"> 
-                  </ng-template>
-          </div>
-          <ng-template #question>
-              <p class="texteee">{{value}}</p>
-              notMyTurn
-            </ng-template>
-        </div>
-        <p class="texteee">
-          {{message}}
-        </p>
-        
+       
+  <div *ngIf="room && room.players.length > 1">
+    game ready
+    <div *ngIf="card ; else nocard">
+      <img src="https://www.papiria.de/WebRoot/Store4/Shops/62463763/51C7/0E28/8CAA/D737/23CA/C0A8/28BB/FAE3/LB1340a_xs.jpg" alt="cards"
+        (click)="randomCard()">
+    </div>
+    <ng-template #nocard>
+      <div [innerHTML]="htmlStr"></div>
+    </ng-template>
+
+    <div *ngIf="isMyTurn(); else elseBlock">
+    </div>
+    <ng-template #elseBlock>
+    Opponent turn<br> 
+      {{lastResponse()}}
+      <!-- <img src="{{this.img[1].urlImg}}" alt="cards"
+        > -->
+    </ng-template>
+
+    <div *ngIf="isMyTurn() ;else question">
+      myTurn
+
+      <div *ngIf="isMyTurnToAnswer(); else answer">
+        {{lastQuestion()}}
+        <br>
+        <button (click)="sendAnswer(true)">Oui</button>
+        <button (click)="sendAnswer(false)">Non</button>
+      </div>
+      <ng-template #answer>
+
+        <input #box (keyup.enter)="onEnter(box.value)">
       </ng-template>
-      
     </div>
-
-
+    <ng-template #question>
+      <p>{{value}}</p>
+    </ng-template>
   </div>
-
+  <p>
+    {{message}}
+  </p>
+  <button type="button" class="btn btn-outline-dark" (click)="rageQuit()">RageQuit</button>
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <button type="button" class="btn buttonMenu" (click)="mainMenu()">menu</button>
     </div>
-
-
-
-
   </div>
+  <div *ngIf="popup" id="exampleModalLive" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel"
+    style="padding-right: 10px; display: block;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">AND THE WINNER IS ...</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="this.room.players[0].win === true">
+            {{this.room.players[1].name}}!
+          </div>
+          <div *ngIf="this.room.players[1].win === true">
+            {{this.room.players[0].name}} !
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="mainMenu()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
