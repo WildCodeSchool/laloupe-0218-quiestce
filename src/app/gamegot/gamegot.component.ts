@@ -27,6 +27,7 @@ export class GamegotComponent implements OnInit {
   opponentId: number;
   imgbalise: string = '';
   img;
+  imgot;
   rooms: Observable<any[]>;
   popup = false;
 
@@ -46,20 +47,27 @@ export class GamegotComponent implements OnInit {
     .subscribe((img) => {
       this.img = img;
     });
-
     this.db
       .doc<Room>('rooms/' + this.roomId)
       .valueChanges()
       .subscribe((room) => {
         this.room = room;
-        this.myPlayerId = room.players[0].name === this.username ? 0 : 1;
-        this.opponentId = room.players[1].name === this.username ? 1 : 0;
+        if (!room) {
+          this.router.navigate(['home']);
+        }
+        console.log(this.room);
         if (room.players.length === 2) {
           if (this.room.players[0].win || this.room.players[1].win) {
             this.popup = true;
           }
           this.message = ' ';
         }
+        this.myPlayerId = room.players[0].name === this.username ? 0 : 1;
+        // this.opponentId = room.players[0].name === this.username ? 1 : 0;
+        if (room.players[1]) {
+          this.opponentId = room.players[1].name === this.username ? 1 : 0;
+        }
+        
       });
   }
 
@@ -92,6 +100,8 @@ export class GamegotComponent implements OnInit {
     console.log('cc');
     
     this.router.navigate(['home']);
+    this.db.doc<Room>('rooms/' + this.roomId).delete().then(() => {
+    });
   }
   // return a random number
   getRandomInt(max) {
@@ -197,10 +207,16 @@ export class GamegotComponent implements OnInit {
       this.room.players[0].win = true;
       this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
       this.router.navigate(['home']);
+      this.db.doc<Room>('rooms/' + this.roomId).delete().then(() => {
+
+      });
     } else if (this.room.players[1].name === this.username) {
       this.room.players[1].win = true;
       this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
       this.router.navigate(['home']);
+      this.db.doc<Room>('rooms/' + this.roomId).delete().then(() => {
+
+      });
     }
   }
 }

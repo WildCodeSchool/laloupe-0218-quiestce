@@ -2,12 +2,15 @@
   cursor: url("http://dessinsonweb.free.fr/wp-content/uploads/DESSINSONWEB_Curseur_Anime_Star_Wars_Sabre_Laser_Fluorescent_4.gif"), pointer;
 }
   .test img{
-    width: 86px;
-    height: 129px;
+    width: 280px;
+    height: 400px;
     margin-right: auto;
     margin-left: auto;
     display: block;
-    margin-top: 10px;
+    margin-top: 20px;
+  }
+  #exampleModalLive{
+    color:black
   }
   .test h3 {
     color: white;
@@ -59,9 +62,9 @@
     margin-right: auto;
     margin-left: auto;
     display: block;
-    width: 86px;
-    height: 129px;
-    margin-top: 10px;
+    width: 280px;
+    height: 400px;
+    margin-top: 20px;
 }
 .randomcard h3 {
   color: white;
@@ -138,7 +141,7 @@ label ul li {
 
   .table {
     position: relative;
-    width: 1000px;
+    width: 990px;
     height: 500px;
     margin: 0 auto;
     padding: 18px 18px 30px;
@@ -197,7 +200,7 @@ label ul li {
   }
   
   .deck>input {
-    margin: 0 10px 7px;
+    margin: 0 8.5px 7px;
     z-index: 99;
     cursor: pointer;
     opacity: 0;

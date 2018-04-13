@@ -1,314 +1,358 @@
 .pointer{
     cursor: url("https://media.giphy.com/media/MxOZvZSC8tbRC/giphy.gif"), pointer !important;
+    background: url("http://nsm09.casimages.com/img/2018/04/13//18041309485023832215665378.jpg");
+  background-size:1280px 720px;
+  height: 100%;
+  width: 100%;
 }
-  .test img{
-    width: 86px;
-    height: 129px;
-  }
+.container-fluid{
+
+  height: 100%;
+  width: 100%;
+}
+.test img{
+  width: 280px;
+    height: 400px;
+    margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  
+}
+#exampleModalLive{
+  color:black
+}
+.test h3 {
+  color: white;
+  text-align: center;
+  font-family: 'Coustard', serif;
+  font-size: 20px;
+}
 .buttonMenu{
-    // margin-top: 5px;
-    padding-left: 70px;
-    padding-right: 70px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: white;
-    background-color: black;
-    font-weight: bold;
-    font-family: 'Coustard', serif;
-    font-size: 20px;
-    margin-top: 70px;
+  // margin-top: 5px;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: white;
+  background-color: black;
+  font-weight: bold;
+  font-family: 'Coustard', serif;
+  font-size: 20px;
+  margin-top: 43px;
 }
 .buttonMenu:hover {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }
 .block {
-    height: 470px;
+  height: 470px;
 }
 .wrapper {
-		perspective: 3000px;
-        transform-style: preserve-3d;
+  perspective: 3000px;
+      transform-style: preserve-3d;
 }
 
 .box1 {
-    border: solid black 5px;
-    border-top: none;
-    border-bottom: none;
-    border-left: none;
-    height: 470px;
-    //background-image: url("http://nsm09.casimages.com/img/2018/04/12//18041210021723832215663868.jpg");
-    //background-size: cover;
+  border: solid black 5px;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  height: 470px;
+  //background-image: url("http://nsm09.casimages.com/img/2018/04/12//18041210021723832215663868.jpg");
+  //background-size: cover;
 }
 .box2 {
-    border-top: solid black 5px;
-    
+  border-top: solid black 5px;
+  
 
 }
 
 .randomcard img{
-    margin-right: auto;
-    margin-left: auto;
-    display: block;
-    width: 50px;
-    height: 70px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  width: 280px;
+  height: 400px;
+   margin-top: 20px;
+}
+.randomcard h3 {
+color: white;
+  text-align: center;
+  font-family: 'Coustard', serif;
+  font-size: 20px;
 }
 .randomC{
-  margin-right: auto;
-    margin-left: auto;
-    display: block;
-    width: 50px;
-    height: 70px;
+margin-right: auto;
+  margin-left: auto;
+  display: block;
+  width: 50px;
+  height: 70px;
 }
 form{
-	max-width: 500px;
-	margin: 10px auto;
-	border: 1px solid #ccc;
-	background-color: white;
-	height: 65%;
-  }
-  .msg-wrapper{
-	max-height: 80%;
-	overflow: auto;
-  }
-  .msg-wrapper em{
-	font-size: 15px;
-	padding-right: 20px;
-	font-weight: bold;
-  }
-  .msg-wrapper div{
-    font-size: 16px;
-  }
-  .textus {
-	  height: 80%;
-  }
-  .texteee {
-      color: white;
-  }
- 
+max-width: 500px;
+margin: 10px auto;
+border: 1px solid #ccc;
+background-color: white;
+height: 60%;
+}
+.msg-wrapper{
+max-height: 80%;
+overflow: auto;
+}
+.msg-wrapper em{
+font-size: 15px;
+padding-right: 20px;
+font-weight: bold;
+}
+.msg-wrapper div{
+  font-size: 16px;
+}
+.textus {
+  height: 80%;
+}
+.texteee {
+    color: white;
+}
+
 
 .flexus {
-  display: flex;
-  justify-content: space-around;
+display: flex;
+justify-content: space-around;
 }
-.elementA {
-  margin-bottom: 300px;
-}
+// .btn  {
+//   margin-bottom: 200px;
+//   float: left;
+// }
 .elementB {
-  background-color: black;
-  opacity: 0.8;
-  border-radius: 10px;
-  margin-top: 20px;
-  width: 600px;
-  height: 140px;
+background-color: black;
+opacity: 0.8;
+border-radius: 10px;
+margin-top: 20px;
+width: 600px;
+height: 140px;
+color: white;
+text-align: center;
+font-family: 'Coustard', serif;
+font-size: 20px;
+padding-top: 40px;
 }
 
 label ul li {
-  display: table-cell;
+display: table-cell;
 }
- label ul li input {
-   float: right;
-   bottom: 30px;
+label ul li input {
+ float: right;
+ bottom: 30px;
+}
+.mymodal {
+  z-index: 10000 !important;
+}
+
+.table {
+  position: relative;
+  width: 990px;
+  height: 500px;
+  margin: 0 auto;
+  padding: 18px 18px 30px;
+  display: table;
+  line-height: 0;
+  box-sizing: border-box;
+  
+}
+
+// .deck {
+//   display: table;
+//   vertical-align: middle;
+//   perspective: 1500px;
+// }
+
+.deck {
+  z-index: 0;
+  position: relative;
+  display: inline;
+  vertical-align: middle;
+  perspective: 1500px;
+}
+ .deck a {
+   font-size: 11px;
+   color: black;
+   font-family: 'Coustard', serif;
  }
-  .mymodal {
-    z-index: 10000 !important;
-  }
-
-  .table {
-    position: relative;
-    width: 1000px;
-    height: 500px;
-    margin: 0 auto;
-    padding: 18px 18px 30px;
-    display: table;
-    line-height: 0;
-    box-sizing: border-box;
-    
-  }
-
-  // .deck {
-  //   display: table;
-  //   vertical-align: middle;
-  //   perspective: 1500px;
-  // }
-
-  .deck {
-    z-index: 0;
-    position: relative;
-    display: inline;
-    vertical-align: middle;
-    perspective: 1500px;
-  }
-   .deck a {
-     font-size: 11px;
-     color: black;
-     font-family: 'Coustard', serif;
-   }
-    .deck>b {
-    background: black;
-    background: linear-gradient(black, red);
-    border: 5px solid #f8fff9;
-    box-sizing: border-box;
-     transform: translateX(0%) rotateY(0deg);
-    transform-origin: 130% center;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
-    filter: brightness(1);
-  }
-  /* --- CARD SETTINGS --- */
-  .deck>u {
-    font: bold 11px/1 Arial, Helvetica, sans-serif;
-    color: #148;
-    background: white;
-    text-decoration: none;
-    transform: translateX(160%) rotateY(-180deg);
-    transform-origin: -30% center;
-    box-shadow: 130px 30px 40px -20px rgba(0, 0, 0, 0);
-    filter: brightness(3);
-  }
-
-  .deck>input,
-  .deck>u,
   .deck>b {
-    width: 86px;
-    height: 129px;
-    position: relative;
-  }
-  
+  //background: black;
+  //background: linear-gradient(black, red);
+  border: 5px solid #f8fff9;
+  box-sizing: border-box;
+   transform: translateX(0%) rotateY(0deg);
+  transform-origin: 130% center;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
+  filter: brightness(1);
+}
+/* --- CARD SETTINGS --- */
+.deck>u {
+  font: bold 11px/1 Arial, Helvetica, sans-serif;
+  color: #148;
+  background: white;
+  text-decoration: none;
+  transform: translateX(160%) rotateY(-180deg);
+  transform-origin: -30% center;
+  box-shadow: 130px 30px 40px -20px rgba(0, 0, 0, 0);
+  filter: brightness(3);
+}
+
+.deck>input,
+.deck>u,
+.deck>b {
+  width: 86px;
+  height: 129px;
+  position: relative;
+}
+
+.deck>input {
+  margin: 0 8.5px 7px;
+  z-index: 99;
+  cursor: pointer;
+  opacity: 0;
+  box-shadow: 10px 5px 5px black;
+}
+
+.deck>u,
+.deck>b {
+  left: -5px; /* Subtract margin value */
+  margin-left: -86px; /* Subtract width value */
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  border-radius: 8px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+   transition: all .8s;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  z-index: 0;
+}
+
+/* --- FRONT CONTENT --- */
+
+
+
+.deck>u>img {
+  display: block;
+  width: 74px;
+  height: 95px;
+  margin: 5px auto 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  //background: linear-gradient(#fcfcff, #fff 5%, #fbfbfe 65%, #f3f3f5 100%);
+}
+
+.deck>u>i {
+  display: block;
+  margin: 1px 4px 0;
+  font: 9px/.9 Arial, Helvetica, sans-serif;
+  //color: #a00;
+}
+
+/* --- BACK CONTENT --- */
+
+
+
+.deck>b::before,
+.deck>b::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: url("http://nsm09.casimages.com/img/2018/04/13//18041310135423832215665407.jpg");
+  background-size: 86px 129px;
+  border-radius: inherit;
+  opacity: .3;
+}
+
+// .deck>b::after {
+//   background-position: calc(50% + 18px) calc(50% + 18px);
+// }
+
+/* --- ANIMATION AND 3D SETTINGS --- */
+
+
+.deck>input:checked + u,
+.deck>input:checked + u + b {
+  z-index: 10;
+}
+
+.deck>input:focus + u,
+.deck>input:focus + u + b {
+  transition-property:  transform, filter, box-shadow; /* Exclude z-index to immediately overlay */
+  outline: 0;
+  z-index: 90;
+}
+
+/* --- FRONT ANIMATION --- */
+
+.deck>input:checked + u {
+  transform: translateX(0%) rotateY(0deg);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
+  filter: brightness(1);
+}
+
+/* --- BACK ANIMATION --- */
+
+.deck>input:checked + u + b {
+  transform: translateX(-160%) rotateY(180deg);
+  box-shadow: 80px 10px 20px -40px rgba(0, 0, 0, 0);
+  filter: brightness(0);
+}
+
+/* Edge hack - Prevent click during transition, otherwise the animation breaks. */
+
+@supports (-ms-ime-align:auto) {
   .deck>input {
-    margin: 0 10px 7px;
-    z-index: 99;
-    cursor: pointer;
-    opacity: 0;
-    box-shadow: 10px 5px 5px black;
+    animation: step-end .8s; // Time is the same as the main transition
   }
-  
   .deck>u,
   .deck>b {
-    left: -5px; /* Subtract margin value */
-    margin-left: -86px; /* Subtract width value */
-    display: inline-block;
-    text-align: center;
-    vertical-align: top;
-    border-radius: 8px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-     transition: all .8s;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    z-index: 0;
+    cursor: pointer;
   }
-  
-  /* --- FRONT CONTENT --- */
-  
-  
-  
-  .deck>u>img {
-    display: block;
-    width: 74px;
-    height: 95px;
-    margin: 5px auto 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background: #fff;
-    background: linear-gradient(#fcfcff, #fff 5%, #fbfbfe 65%, #f3f3f5 100%);
+
+  .deck>input:checked {
+    animation-name: noclick1;
   }
-  
-  .deck>u>i {
-    display: block;
-    margin: 1px 4px 0;
-    font: 9px/.9 Arial, Helvetica, sans-serif;
-    color: #a00;
+
+  .deck>input:not(:checked) {
+    animation-name: noclick2;
   }
-  
-  /* --- BACK CONTENT --- */
-  
+
+  @keyframes noclick1 {
+    0%   { visibility: hidden; }
+    100% { visibility: visible; }
+  }
+  @keyframes noclick2 {
+    0%   { visibility: hidden; }
+    100% { visibility: visible; }
+  }
+}
+
  
-  
-  .deck>b::before,
-  .deck>b::after {
-    content: '';
-    display: block;
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    background: /*url image ici*/center/36px;
-    border-radius: inherit;
-    opacity: .3;
-  }
-  
-  .deck>b::after {
-    background-position: calc(50% + 18px) calc(50% + 18px);
-  }
-  
-  /* --- ANIMATION AND 3D SETTINGS --- */
-  
-  
-  .deck>input:checked + u,
-  .deck>input:checked + u + b {
-    z-index: 10;
-  }
-  
-  .deck>input:focus + u,
-  .deck>input:focus + u + b {
-    transition-property:  transform, filter, box-shadow; /* Exclude z-index to immediately overlay */
-    outline: 0;
-    z-index: 90;
-  }
-  
-  /* --- FRONT ANIMATION --- */
-  
-  .deck>input:checked + u {
-    transform: translateX(0%) rotateY(0deg);
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
-    filter: brightness(1);
-  }
-  
-  /* --- BACK ANIMATION --- */
-  
-  .deck>input:checked + u + b {
-    transform: translateX(-160%) rotateY(180deg);
-    box-shadow: 80px 10px 20px -40px rgba(0, 0, 0, 0);
-    filter: brightness(0);
-  }
-  
-  /* Edge hack - Prevent click during transition, otherwise the animation breaks. */
-  
-  @supports (-ms-ime-align:auto) {
-    .deck>input {
-      animation: step-end .8s; // Time is the same as the main transition
-    }
-    .deck>u,
-    .deck>b {
-      cursor: pointer;
-    }
-  
-    .deck>input:checked {
-      animation-name: noclick1;
-    }
-  
-    .deck>input:not(:checked) {
-      animation-name: noclick2;
-    }
-  
-    @keyframes noclick1 {
-      0%   { visibility: hidden; }
-      100% { visibility: visible; }
-    }
-    @keyframes noclick2 {
-      0%   { visibility: hidden; }
-      100% { visibility: visible; }
-    }
-  }
-  
-   
-  #messageInput {
-    width: 80%;
-  }
-  .anonyme {
-    margin-top: 10px;
-    width:86px;
-    height: 120px;
-  }
+#messageInput {
+  width: 80%;
+}
+
+
+.dialogue {
+color: white;
+}
+
+.anonyme {
+  margin-top: 10px;
+  width:86px;
+  height: 120px;
+}
+

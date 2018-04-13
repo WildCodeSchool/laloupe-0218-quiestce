@@ -1,16 +1,20 @@
-<div class="container-fluid pointer">
+<div class="container-fluid pointer" *ngIf="room">
 
   <div class="row block">
     <div class='col-9 box1'>
-      
-     
-<div class="table">
- 
-  <div class="deck" *ngFor="let item of img; let i = index">
-    <input type="checkbox" checked="checked" [disabled]="item.disabled" (change)="isLoose(i);"><u><img alt="" [src]="item.urlImg"><a>{{item.name}}</a></u><b></b>
-</div>
- 
-  <!-- <div class="deck">
+
+
+      <div class="table">
+        <div class="deck" *ngFor="let item of img; let i = index">
+          <input type="checkbox" checked="checked" [disabled]="item.disabled" (change)="isLoose(i);">
+          <u>
+            <img alt="" [src]="item.urlImg">
+            <a>{{item.name}}</a>
+          </u>
+          <b></b>
+        </div>
+
+        <!-- <div class="deck">
 
     <input type="checkbox" checked><u><img alt="" src="http://lorempixel.com/200/200/abstract"><b>Click<br>to<br>Flip</b></u><b></b>
 
@@ -40,119 +44,106 @@
     </b><input type="checkbox" checked="checked"><u><img alt="" src="http://nsm09.casimages.com/img/2018/04/11//18041106355523832215662934.png"><a>kylo ren</a></u><b>
     </b>
   </div> -->
-</div>
-  </div>
-    <div class="col-3">
-        <div *ngIf="myPlayerId === undefined || !room.players[myPlayerId].url; else bob" class="randomcard">
-          <img class="anonyme" src="http://nsm09.casimages.com/img/2018/04/12//18041210180823832215663875.jpg" alt="cards" (click)="randomCard()">
-        </div>
-    <ng-template #bob>
-      <!-- <div class="test" [innerHTML]="htmlStr"> -->
-      <div class="test" >
-      <img [src]="room.players[myPlayerId].url" alt = "imgToFind" class="test"><h3>{{room.players[myPlayerId].img}}</h3>
       </div>
-    </ng-template>
-        <form>
-            <div class="row textus">
-              <div class="col-12">
-                <div id='messagesDiv' class="msg-wrapper"></div>
-                <hr />
-               </div>
-            </div> 
-            <div class="row">
-              <div class="col-12">
-                <label>
-                  <ul>
-                    <li>
-                  <textarea id='messageInput' placeholder='Message'></textarea></li>
-                  <li><input type="button" value="send"></li>
-                </ul>
-                </label>
-              </div>
-            </div>
-          </form>
+    </div>
+    <div class="col-3">
+      <div *ngIf="myPlayerId === undefined || !room.players[myPlayerId].url; else bob" class="randomcard">
+        <img src="http://nsm09.casimages.com/img/2018/04/12//18041210291723832215665015.jpg" alt="cards" (click)="randomCard()">
+        <h3>click to change</h3>
+      </div>
+      <ng-template #bob>
+        <!-- <div class="test" [innerHTML]="htmlStr"> -->
+        <div class="test">
+          <img [src]="room.players[myPlayerId].url" alt="imgToFind" class="test">
+          <h3>{{room.players[myPlayerId].img}}</h3>
+        </div>
+      </ng-template>
     </div>
   </div>
   <div class="row box2">
-    <div class="col-9">
-        <div class="container-fluid flexus">
-          <div class="elementA">
-      <button type="button" class="btn buttonMenu" (click)="rageQuit()">flee the fight</button>
-          </div>
-    <div class="elementB">
-      <div *ngIf="auth.user | async; then authenticated else guest">
-        <!-- template will replace this div -->
-      </div>
-      <!-- User NOT logged in -->
-      <ng-template #guest>
-        <app-home></app-home>
-      </ng-template>
-      <!-- User logged in -->
-      <ng-template #authenticated>
-        <div *ngIf="auth.user | async as user">
+    <div class="col-10">
+      <div class="container-fluid flexus">
+        <div class="elementA">
+          <button type="button" class="btn buttonMenu" (click)="rageQuit()">flee the fight</button>
         </div>
-  <div *ngIf="room && room.players.length > 1">
-    <!-- <div *ngIf="card ; else nocard">
+        <div class="elementB">
+          <div *ngIf="auth.user | async; then authenticated else guest">
+            <!-- template will replace this div -->
+          </div>
+          <!-- User NOT logged in -->
+          <ng-template #guest>
+            <app-home></app-home>
+          </ng-template>
+          <!-- User logged in -->
+          <ng-template #authenticated>
+            <div *ngIf="auth.user | async as user">
+            </div>
+
+
+
+
+            <div *ngIf="room && room.players.length > 1">
+              <!-- <div *ngIf="card ; else nocard">
       <img src="https://www.papiria.de/WebRoot/Store4/Shops/62463763/51C7/0E28/8CAA/D737/23CA/C0A8/28BB/FAE3/LB1340a_xs.jpg" alt="cards"
         (click)="randomCard()">
     </div>
     <ng-template #nocard>
       <div [innerHTML]="htmlStr"></div>
     </ng-template> -->
-    <div *ngIf="isMyTurn(); else elseBlock">
-    </div>
-    <ng-template #elseBlock>
-    Opponent turn<br> 
-      {{lastResponse()}}
-      <!-- <img src="{{this.img[1].urlImg}}" alt="cards"
+              <div *ngIf="isMyTurn(); else elseBlock">
+              </div>
+              <ng-template #elseBlock>
+                Opponent turn
+                <br> {{lastResponse()}}
+                <!-- <img src="{{this.img[1].urlImg}}" alt="cards"
         > -->
-    </ng-template>
-    <div *ngIf="isMyTurn() ;else question">
-      myTurn
-      <div *ngIf="isMyTurnToAnswer(); else answer">
-        {{lastQuestion()}}
-        <br>
-        <button (click)="sendAnswer(true)">Oui</button>
-        <button (click)="sendAnswer(false)">Non</button>
-      </div>
-      <ng-template #answer>
+              </ng-template>
+              <div *ngIf="isMyTurn() ;else question">
+                myTurn
+                <div *ngIf="isMyTurnToAnswer(); else answer">
+                  {{lastQuestion()}}
+                  <br>
+                  <button (click)="sendAnswer(true)">Oui</button>
+                  <button (click)="sendAnswer(false)">Non</button>
+                </div>
+                <ng-template #answer>
 
-        <input #box (keyup.enter)="onEnter(box.value)">
-      </ng-template>
-    </div>
-    <ng-template #question>
-      <p>{{value}}</p>
-    </ng-template>
-  </div>
-  <p>
-    {{message}}
-  </p>
-  <div class="row justify-content-center">
-    <div class="col-12 text-center">
-    </div>
-    </div>
-  <div *ngIf="popup" id="exampleModalLive" class="modal fade show mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel"
-    style="padding-right: 10px; display: block;">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">AND THE WINNER IS ...</h4>
-          <button type="button" class="close" aria-label="Close" (click)="mainMenu()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div *ngIf="this.room.players[0].win === true">
-            {{this.room.players[1].name}}!
-          </div>
-          <div *ngIf="this.room.players[1].win === true">
-            {{this.room.players[0].name}} !
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="mainMenu()">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-template>
+                  <input #box (keyup.enter)="onEnter(box.value)">
+                </ng-template>
+              </div>
+              <ng-template #question>
+                <p>{{value}}</p>
+              </ng-template>
+            </div>
+            <p>
+              {{message}}
+            </p>
+            <div class="row justify-content-center">
+              <div class="col-12 text-center">
+              </div>
+            </div>
+            <div *ngIf="popup" id="exampleModalLive" class="modal fade show mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel"
+              style="padding-right: 10px; display: block;">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">AND THE WINNER IS ...</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="mainMenu()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div *ngIf="this.room.players[0].win === true">
+                      {{this.room.players[1].name}}!
+                    </div>
+                    <div *ngIf="this.room.players[1].win === true">
+                      {{this.room.players[0].name}} !
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="mainMenu()">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
