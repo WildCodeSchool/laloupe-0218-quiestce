@@ -21,5 +21,7 @@ export class HomeComponent implements OnInit {
   createGamegot() {
     this.router.navigate(['matchmakingot']);
   }
-
+  createGamewcs() {
+    this.router.navigate(['matchmakingwcs']);
+  }
 }

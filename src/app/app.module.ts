@@ -28,6 +28,8 @@ import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { GameComponent } from './game/game.component';
 import { GamegotComponent } from './gamegot/gamegot.component';
 import { MatchmakingotComponent } from './matchmakingot/matchmakingot.component';
+import { MatchmakingwcsComponent } from './matchmakingwcs/matchmakingwcs.component';
+import { GamewcsComponent } from './gamewcs/gamewcs.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,8 @@ import { MatchmakingotComponent } from './matchmakingot/matchmakingot.component'
     GameComponent,
     GamegotComponent,
     MatchmakingotComponent,
+    MatchmakingwcsComponent,
+    GamewcsComponent,
 
   ],
   imports: [

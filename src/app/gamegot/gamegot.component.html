@@ -49,7 +49,7 @@
     <div class="col-3">
       <div *ngIf="myPlayerId === undefined || !room.players[myPlayerId].url; else bob" class="randomcard">
         <img src="http://nsm09.casimages.com/img/2018/04/12//18041210291723832215665015.jpg" alt="cards" (click)="randomCard()">
-        <h3>click to change</h3>
+        <h3>Click to begin !</h3>
       </div>
       <ng-template #bob>
         <!-- <div class="test" [innerHTML]="htmlStr"> -->
