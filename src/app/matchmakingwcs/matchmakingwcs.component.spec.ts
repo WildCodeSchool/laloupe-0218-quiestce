@@ -8,7 +8,7 @@ describe('MatchmakingwcsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MatchmakingwcsComponent ]
+      declarations: [MatchmakingwcsComponent],
     })
     .compileComponents();
   }));
