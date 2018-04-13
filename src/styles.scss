@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Coustard');
+body {
+    background-image: url("http://nsm09.casimages.com/img/2018/04/10//18041004391223832215661337.jpg");
+    // cursor: url("http://dessinsonweb.free.fr/wp-content/uploads/DESSINSONWEB_Curseur_Anime_Star_Wars_Sabre_Laser_Fluorescent_4.gif"), pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:1280px;
+    height: 720px;
+    
+    // overflow: hidden;
+}

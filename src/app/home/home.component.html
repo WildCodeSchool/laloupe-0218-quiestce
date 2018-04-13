@@ -5,20 +5,70 @@
 
 <!-- user NOT log -->
 <ng-template #guest>
-  <h3>Hey, GUEST</h3>
-  <p>Login to get started...</p>
+  <div class="container pointer">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h3>Hey, GUEST<br/>login to get started...</h3>
 
+        <ngb-carousel interval="500000" class="carousel">
+          <ng-template ngbSlide>
+            <img src="http://nsm09.casimages.com/img/2018/04/10//18041004004523832215661187.jpg" height="410px" alt="Random first slide">
+            <div class="carousel-caption">
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <img src="http://nsm09.casimages.com/img/2018/04/13//18041310214423832215665417.jpg" height="410px" alt="Random second slide">
+            <div class="carousel-caption">
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <img src="http://nsm09.casimages.com/img/2018/04/13//18041310472023832215665443.png" height="410px" alt="Random third slide">
+            <div class="carousel-caption">
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+    </div>
+  </div>
+
+  
 
 </ng-template>
 
 
 <!-- user log  -->
 <ng-template #authenticated>
-  <div *ngIf="auth.user | async as user">
-
-    <h3>Hey, {{ user.displayName }}</h3>
-    <img [src]="user.photoURL">
+  <div class="container pointer">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <div *ngIf="auth.user | async as user">
+          <h3>Hello, <span>{{ user.displayName }}</span> wanna play a awesome game?</h3>
+          <ngb-carousel interval="500 000 000" class="carousel">
+            <ng-template ngbSlide>
+              <img src="http://nsm09.casimages.com/img/2018/04/10//18041004004523832215661187.jpg" (click)="createGame()" height="410px" alt="Random first slide">
+              <div class="carousel-caption">
+                
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <img src="http://nsm09.casimages.com/img/2018/04/13//18041310214423832215665417.jpg" (click)="createGamegot()" height="410px" alt="Random second slide">
+              <div class="carousel-caption">
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <img src="http://nsm09.casimages.com/img/2018/04/13//18041310472023832215665443.png" (click)="createGamewcs()" height="410px" alt="Random third slide">
+              <div class="carousel-caption">
+              </div>
+            </ng-template>
+          </ngb-carousel>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+        <button type="button" class="btn" (click)="createGame()">Play</button>
+      </div>
+    </div>
   </div>
-
 
 </ng-template>

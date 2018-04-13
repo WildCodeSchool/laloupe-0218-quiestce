@@ -11,6 +11,6 @@ export const environment = {
     databaseURL: 'https://laloupe-0218-quiestce.firebaseio.com',
     projectId: 'laloupe-0218-quiestce',
     storageBucket: '',
-    messagingSenderId: '697009125532'
-  }
+    messagingSenderId: '697009125532',
+  },
 };

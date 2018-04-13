@@ -11,6 +11,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { NavbarComponent } from './navbar/navbar.component';
 import { Observable } from 'rxjs/Observable';
+import { FormsModule } from '@angular/forms';
 
 import { HomeComponent } from './home/home.component';
 import { RulesComponent } from './rules/rules.component';
@@ -23,6 +24,12 @@ import { routes } from './app.routes';
 
 
 import * as $ from 'jquery';
+import { MatchmakingComponent } from './matchmaking/matchmaking.component';
+import { GameComponent } from './game/game.component';
+import { GamegotComponent } from './gamegot/gamegot.component';
+import { MatchmakingotComponent } from './matchmakingot/matchmakingot.component';
+import { MatchmakingwcsComponent } from './matchmakingwcs/matchmakingwcs.component';
+import { GamewcsComponent } from './gamewcs/gamewcs.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +37,12 @@ import * as $ from 'jquery';
     HomeComponent,
     RulesComponent,
     LoginComponent,
+    MatchmakingComponent,
+    GameComponent,
+    GamegotComponent,
+    MatchmakingotComponent,
+    MatchmakingwcsComponent,
+    GamewcsComponent,
 
   ],
   imports: [
@@ -38,10 +51,11 @@ import * as $ from 'jquery';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    FormsModule,
     routes,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
   ],
   providers: [AuthService, AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
