@@ -9,7 +9,8 @@ import { Img } from './../models/img';
 import * as firebase from 'firebase/app';
 import { MatchmakingComponent } from '../matchmaking/matchmaking.component';
 import { AuthService } from '../auth.service';
-import { NgbModal, NgbActiveModal, NgbModule, 
+import {
+  NgbModal, NgbActiveModal, NgbModule,
   ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-gamegot',
@@ -31,8 +32,8 @@ export class GamegotComponent implements OnInit {
   rooms: Observable<any[]>;
   popup = false;
 
-  constructor(private route: ActivatedRoute, authService: AuthService, 
-              private db: AngularFirestore, private router: Router, 
+  constructor(private route: ActivatedRoute, authService: AuthService,
+              private db: AngularFirestore, private router: Router,
               public auth: AuthService, private modalService: NgbModal) {
     // this.img = db.collection('img').valueChanges();
     this.rooms = db.collection('rooms').valueChanges();
@@ -42,11 +43,11 @@ export class GamegotComponent implements OnInit {
     this.username = this.route.snapshot.paramMap.get('username');
     this.username = this.username.replace(/\s/g, '');
     this.db
-    .collection('imgot')
-    .valueChanges()
-    .subscribe((img) => {
-      this.img = img;
-    });
+      .collection('imgot')
+      .valueChanges()
+      .subscribe((img) => {
+        this.img = img;
+      });
     this.db
       .doc<Room>('rooms/' + this.roomId)
       .valueChanges()
@@ -55,7 +56,6 @@ export class GamegotComponent implements OnInit {
         if (!room) {
           this.router.navigate(['home']);
         }
-        console.log(this.room);
         if (room.players.length === 2) {
           if (this.room.players[0].win || this.room.players[1].win) {
             this.popup = true;
@@ -67,7 +67,7 @@ export class GamegotComponent implements OnInit {
         if (room.players[1]) {
           this.opponentId = room.players[1].name === this.username ? 1 : 0;
         }
-        
+
       });
   }
 
@@ -92,13 +92,11 @@ export class GamegotComponent implements OnInit {
   }
   // check if it's my turn
   isMyTurn(): boolean {
-    return this.room && this.room.turn !== undefined && 
-    this.room.players[this.room.turn].name === this.username;
+    return this.room && this.room.turn !== undefined &&
+      this.room.players[this.room.turn].name === this.username;
   }
   // go to home
   mainMenu() {
-    console.log('cc');
-    
     this.router.navigate(['home']);
     this.db.doc<Room>('rooms/' + this.roomId).delete().then(() => {
     });
@@ -115,7 +113,7 @@ export class GamegotComponent implements OnInit {
       .collection<Img>('imgot')
       .valueChanges()
       .take(1)
-      .subscribe((img) => {        
+      .subscribe((img) => {
         imgbalise = img[this.getRandomInt(23)];
         this.updateRoom();
         if (this.room.players[0].name === this.username) {
@@ -123,27 +121,26 @@ export class GamegotComponent implements OnInit {
           this.room.players[0].url = imgbalise.urlImg;
           this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
           // this.htmlStr = '<img src=' + this.room.players[0].url +
-        //  ' alt = "imgToFind" class="test"><h3>' + this.room.players[0].img + '</h3>';
+          //  ' alt = "imgToFind" class="test"><h3>' + this.room.players[0].img + '</h3>';
           // this.card = false;
-          
+
         } else if (this.room.players[1].name === this.username) {
           this.room.players[1].img = imgbalise.name;
           this.room.players[1].url = imgbalise.urlImg;
           this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
           // this.htmlStr = '<img src=' + this.room.players[1].url +
-        //  ' alt = "imgToFind" class="test"><h3>' + this.room.players[1].img + '</h3>';
+          //  ' alt = "imgToFind" class="test"><h3>' + this.room.players[1].img + '</h3>';
           // this.card = false;
-          
+
         }
         this.setWinFalse();
       });
-    console.log(this.img[1].urlImg);
   }
-  isLoose(i) {    
+  isLoose(i) {
 
     if (this.room && this.room.players.length > 1) {
       this.img[i].disabled = true;
-    
+
       if (this.img.reduce((acc, el) => {
         return acc && el.disabled ? el.disabled : false;
       })) {
@@ -152,31 +149,31 @@ export class GamegotComponent implements OnInit {
       }
     }
 
-    
-  }  
- // update room ?
+
+  }
+  // update room ?
   updateRoom() {
     this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
   }
   // input question
-  onEnter(value: string) { 
-    if (this.room.players[0].img.toLowerCase() === value.toLowerCase()) {  
+  onEnter(value: string) {
+    if (this.room.players[0].img.toLowerCase() === value.toLowerCase()) {
       this.room.players[0].win = true;
       this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
-    } else if (this.room.players[1].img.toLowerCase() === value.toLowerCase()) { 
+    } else if (this.room.players[1].img.toLowerCase() === value.toLowerCase()) {
       this.room.players[1].win = true;
       this.db.doc<Room>('rooms/' + this.roomId).update(this.room);
     }
-    const data = { question:value, answer:null, user:'' };
+    const data = { question: value, answer: null, user: '' };
     this.room.answers.push(data);
-    this.test();  
+    this.test();
   }
   // check if it's my turn to answer
   isMyTurnToAnswer() {
     if (this.room.answers.length > 0 &&
-       this.room.answers[this.room.answers.length - 1].user !== this.username &&
-       this.room.answers[this.room.answers.length - 1].answer !== undefined) {
-      return true; 
+      this.room.answers[this.room.answers.length - 1].user !== this.username &&
+      this.room.answers[this.room.answers.length - 1].answer !== undefined) {
+      return true;
     }
     return false;
   }
@@ -188,18 +185,18 @@ export class GamegotComponent implements OnInit {
   }
   // return last question
   lastQuestion() {
-    return 'Question : ' + this.room.answers[this.room.answers.length - 1].question;    
+    return 'Question : ' + this.room.answers[this.room.answers.length - 1].question;
   }
-   // display q&a
+  // display q&a
   lastResponse() {
     if (this.room.answers !== undefined && this.room.answers.length > 0 &&
-       this.room.answers[this.room.answers.length - 1].answer !== null) {
+      this.room.answers[this.room.answers.length - 1].answer !== null) {
       if (this.room.answers[this.room.answers.length - 1].answer) {
         return 'Question: ' + this.room.answers[this.room.answers.length - 1].question +
-    ' Reponse: Oui';
-      } 
+          ' Reponse: Oui';
+      }
       return 'Question: ' + this.room.answers[this.room.answers.length - 1].question +
-    ' Reponse: Non';
+        ' Reponse: Non';
     }
   }
   rageQuit() {

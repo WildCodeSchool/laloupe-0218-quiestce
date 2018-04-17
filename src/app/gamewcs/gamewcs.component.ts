@@ -54,7 +54,6 @@ export class GamewcsComponent implements OnInit {
         if (!room) {
           this.router.navigate(['home']);
         }
-        console.log(this.room);
         if (room.players.length === 2) {
           if (this.room.players[0].win || this.room.players[1].win) {
             this.popup = true;
@@ -96,8 +95,6 @@ export class GamewcsComponent implements OnInit {
   }
   // go to home
   mainMenu() {
-    console.log('cc');
-    
     this.router.navigate(['home']);
     this.db.doc<Room>('rooms/' + this.roomId).delete().then(() => {
     });
@@ -136,7 +133,6 @@ export class GamewcsComponent implements OnInit {
         }
         this.setWinFalse();
       });
-    console.log(this.img[1].urlImg);
   }
   isLoose(i) {    
 
