@@ -1,7 +1,8 @@
 .pointer{
-    cursor: url("http://dessinsonweb.free.fr/wp-content/uploads/DESSINSONWEB_Curseur_Anime_Star_Wars_Sabre_Laser_Fluorescent_4.gif"), pointer;
+    cursor: auto;
     background: url("http://nsm09.casimages.com/img/2018/03/18//18031812013623832215619232.jpg");
   background-size:1280px 720px;
+  background-size: cover;
   height: 100%;
   width: 100%;
   }
@@ -34,7 +35,8 @@
       font-weight: bold;
       font-family: 'Coustard', serif;
       font-size: 20px;
-      margin-top: 43px;
+      margin-top: 80%;
+      margin-bottom: 100%;
   }
   .buttonMenu:hover {
       background-color: white;
@@ -123,7 +125,7 @@
     background-color: black;
     opacity: 0.8;
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 12%;
     width: 600px;
     height: 140px;
     color: white;
@@ -351,4 +353,90 @@
       height: 120px;
     }
   
-  
+    @media screen and (max-width: 1405px) {
+      .elementB {
+        background-color: black;
+        opacity: 0.8;
+        border-radius: 10px;
+        margin-top: 20px;
+        width: 400px;
+        height: 140px;
+        color: white;
+        text-align: center;
+        font-family: 'Coustard', serif;
+        font-size: 20px;
+        padding-top: 40px;
+      }
+      .buttonMenu{
+        // margin-top: 5px;
+        padding-left: 70px;
+        padding-right: 70px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: white;
+        background-color: black;
+        font-weight: bold;
+        font-family: 'Coustard', serif;
+        font-size: 20px;
+        margin-top: 43px;
+    }
+    }
+      @media screen and (max-width: 1290px) {
+        .randomcard img{
+          margin-right: auto;
+          margin-left: auto;
+          display: block;
+          width: 200px;
+          height: 300px;
+          margin-top: 20px;
+      }
+      .test img{
+        width: 200px;
+        height: 300px;
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        margin-top: 20px;
+      }
+        .deck>u>img {
+          display: block;
+          width: 60px;
+          height: 80px;
+          margin: 5px auto 8px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          background: #fff;
+          //background: linear-gradient(#fcfcff, #fff 5%, #fbfbfe 65%, #f3f3f5 100%);
+        }
+        .anonyme {
+          margin-top: 10px;
+          width:70px;
+          height: 105px;
+        }
+        
+        .deck>input,
+      .deck>u,
+      .deck>b {
+        width: 70px;
+        height: 105px;
+        position: relative;
+        margin-top: 1%;
+      }
+      .table {
+        position: relative;
+        width: 640px;
+        height: 500px;
+        margin: 0 auto;
+        padding: 18px 18px 30px;
+        display: table;
+        line-height: 0;
+        box-sizing: border-box;
+        
+      }
+      
+    .deck a {
+      font-size: 8px;
+      color: black;
+      font-family: 'Coustard', serif;
+    }
+      }
