@@ -86,3 +86,27 @@ a {
 .element1 .username {
   color: white;
 }
+
+@media screen and (max-width: 1160px) {
+    .navus {
+      font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 960px) {
+  #nameuser {
+    display: none;
+  }
+  span.icon {
+    width: 30px;
+    height: 30px;
+  }
+  .Custom-Btn {
+    margin-top: 1px;
+  }
+  .imgGoogle {
+    width: 30px;
+    height: 30px;
+  }
+  
+}
