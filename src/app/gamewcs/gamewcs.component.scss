@@ -382,6 +382,22 @@
     }
     }
       @media screen and (max-width: 1290px) {
+        .randomcard img{
+          margin-right: auto;
+          margin-left: auto;
+          display: block;
+          width: 200px;
+          height: 300px;
+          margin-top: 20px;
+      }
+      .test img{
+        width: 200px;
+        height: 300px;
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        margin-top: 20px;
+      }
         .deck>u>img {
           display: block;
           width: 60px;
@@ -397,14 +413,7 @@
           width:70px;
           height: 105px;
         }
-        .test img{
-          width: 200px;
-          height: 300px;
-          margin-right: auto;
-          margin-left: auto;
-          display: block;
-          margin-top: 20px;
-        }
+        
         .deck>input,
       .deck>u,
       .deck>b {
@@ -424,14 +433,7 @@
         box-sizing: border-box;
         
       }
-      .randomcard img{
-        margin-right: auto;
-        margin-left: auto;
-        display: block;
-        width: 200px;
-        height: 300px;
-        margin-top: 20px;
-    }
+      
     .deck a {
       font-size: 8px;
       color: black;
